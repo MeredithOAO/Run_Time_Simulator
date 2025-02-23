@@ -3,80 +3,230 @@
 #include <math.h>
 #include <time.h>
 
-// 宏定义任务数和总利用率（允许总利用率大于 1）
-#define TASK_COUNT         10
-#define TOTAL_UTILIZATION  1.5
+#define TASK_NUMBER 4
 
-// 定义周期的取值范围（例如：50 到 1000 毫秒）
-#define MIN_PERIOD 50.0
-#define MAX_PERIOD 1000.0
-
-// 任务结构体，包含周期、释放时间、截止日期和最坏执行时间
+// 任务结构体定义
 typedef struct {
-    double period;   // 周期
-    double release;  // 释放时间
-    double deadline; // 截止日期
-    double wcet;     // 最坏执行时间
+    int id;
+    int priority;
+    int period;       // 周期 T
+    int wcet;         // 最坏执行时间 C
+    int deadline;     // 截止时间 D（默认等于周期）
+    int release_time; // 释放时间（默认0）
 } Task;
 
-/*
- * 利用 UUnifast 算法生成任务利用率，并随机生成任务参数
- *
- * 参数:
- *   tasks   - 任务数组
- *   n       - 任务数
- *   U_total - 总利用率（可大于 1）
- *
- * 对于每个任务：
- *   随机生成一个周期 period ∈ [MIN_PERIOD, MAX_PERIOD]
- *   计算 wcet = u × period，其中 u 为 UUnifast 算法生成的利用率
- *   释放时间设为 0，截止日期设为周期（隐式截止）
+
+Task tasks[TASK_NUMBER];
+
+
+/**
+ * 生成符合UUniFast算法的任务集合
+ * @param n 任务数量
+ * @param U 总利用率
+ * @param min_period 最小周期
+ * @param max_period 最大周期
+ * @param max_retries 最大重试次数
+ * @return 生成的任务数组指针，失败返回NULL
+ *     // 生成任务集
+    // Task* tasks = generate_task_set(n, U, min_period, max_period, max_retries);
+    // if (!tasks) {
+    //     printf("生成失败，请检查输入参数！\n");
+    //     return 1;
+    // }
+
+    // 打印结果
+    // print_tasks(tasks, n);
+
+    // free(tasks); // 释放内存
  */
-void generate_task_set(Task tasks[], int n, double U_total) {
-    double sumU = U_total;
-    double u;
-
-    for (int i = 0; i < n - 1; i++) {
-        // 生成 (0,1) 内的随机数
-        double rand_val = ((double)rand() / (RAND_MAX + 1.0));
-        // UUnifast 核心公式：u = sumU - nextSumU，其中 nextSumU = sumU * rand_val^(1/(n-i))
-        double nextSumU = sumU * pow(rand_val, 1.0 / (n - i));
-        u = sumU - nextSumU;
-        sumU = nextSumU;
-
-        // 随机生成周期
-        double period = MIN_PERIOD + ((double)rand() / RAND_MAX) * (MAX_PERIOD - MIN_PERIOD);
-        tasks[i].period = period;
-        tasks[i].release = 0.0;       // 释放时间设为 0
-        tasks[i].deadline = period;     // 隐式截止：截止日期等于周期
-        tasks[i].wcet = u * period;     // wcet = 利用率 × 周期
+Task* generate_task_set(int n, double U, 
+                       double min_period, double max_period,
+                       int max_retries) {
+    // 输入参数校验
+    if (n <= 0 || U < 0 || U > n || 
+        min_period <= 0 || max_period <= min_period) {
+        return NULL;
     }
 
-    // 为最后一个任务分配剩余利用率
-    double period = MIN_PERIOD + ((double)rand() / RAND_MAX) * (MAX_PERIOD - MIN_PERIOD);
-    tasks[n - 1].period = period;
-    tasks[n - 1].release = 0.0;
-    tasks[n - 1].deadline = period;
-    tasks[n - 1].wcet = sumU * period;
+    Task* tasks = (Task*)malloc(n * sizeof(Task));
+    if (!tasks) return NULL;
+
+    int valid;
+    for (int retry = 0; retry < max_retries; retry++) {
+        valid = 1;
+        double remaining_U = U;
+
+        // 生成前n-1个任务
+        for (int i = 0; i < n-1; i++) {
+            // 生成随机数s ∈ [0,1)
+            double s = (double)rand() / RAND_MAX;
+            
+            // 计算利用率 u_i = U_remaining * (1 - s^(1/(n-i)))
+            double exponent = 1.0 / (n - i - 1);
+            double u_i = remaining_U * (1 - pow(s, exponent));
+
+            // 合法性检查
+            if (u_i < 0 || u_i > 1.0) {
+                valid = 0;
+                break;
+            }
+
+            // 生成周期 T_i ∈ [min_period, max_period]
+            double T_i = min_period + 
+                        ((double)rand() / RAND_MAX) * (max_period - min_period);
+            
+            // 计算最坏执行时间 C_i = u_i * T_i
+            double C_i = u_i * T_i;
+
+            // 写入任务结构体
+            tasks[i].period = T_i;
+            tasks[i].wcet = C_i;
+            tasks[i].deadline = T_i;    // 截止时间等于周期
+            tasks[i].release_time = 0.0; // 释放时间默认为0
+
+            remaining_U -= u_i;
+        }
+
+        // 处理最后一个任务
+        if (valid) {
+            double u_last = remaining_U;
+            if (u_last < 0 || u_last > 1.0) {
+                valid = 0;
+            } else {
+                // 生成最后一个任务的参数
+                double T_last = min_period + 
+                               ((double)rand() / RAND_MAX) * (max_period - min_period);
+                double C_last = u_last * T_last;
+
+                tasks[n-1].period = T_last;
+                tasks[n-1].wcet = C_last;
+                tasks[n-1].deadline = T_last;
+                tasks[n-1].release_time = 0.0;
+            }
+        }
+
+        if (valid) {
+            return tasks; // 生成成功
+        }
+    }
+
+    free(tasks); // 超过最大重试次数
+    return NULL;
 }
 
-int main() {
-    // 使用宏定义的任务数
-    Task tasks[TASK_COUNT];
-
-    // 初始化随机数种子
-    srand((unsigned)time(NULL));
-
-    // 生成任务集
-    generate_task_set(tasks, TASK_COUNT, TOTAL_UTILIZATION);
-
-    // 输出生成的任务参数
-    printf("Task Set:\n");
-    printf("Task Number\tPeriod\t\tRelease Time\tDDL\tWCET\n");
-    for (int i = 0; i < TASK_COUNT; i++) {
-        printf("%d\t\t%.2f\t\t%.2f\t\t%.2f\t\t%.2f\n", 
-               i + 1, tasks[i].period, tasks[i].release, tasks[i].deadline, tasks[i].wcet);
+// 打印任务集详细信息
+void print_tasks(Task* tasks, int n) {
+    double total_utilization = 0;
+    printf("ID\tPeriod\tWCET\tDeadline\tUtilization\n");
+    for (int i = 0; i < n; i++) {
+        double utilization = tasks[i].wcet / tasks[i].period;
+        total_utilization += utilization;
+        printf("%d\t%d\t%d\t%d\t\t%.4f\n", 
+              i+1, 
+              tasks[i].period,
+              tasks[i].wcet,
+              tasks[i].deadline,
+              utilization);
     }
-    getchar();
+    printf("Total Utilization: %.4f / %.4f\n", total_utilization, total_utilization);
+}
+
+int LCM_two_numbers(int num_1, int num_2){
+
+    int a = num_1;
+    int b = num_2;
+
+     while (b != 0) {
+             int LCM_temp = b;
+             b = a % b;
+             a = LCM_temp;
+         }
+         int GCD = a;
+
+         int LCM_num_1_2 = (num_1 / GCD) * num_2;
+
+         return LCM_num_1_2;
+
+}
+
+void Set_task(Task* tasks){
+
+    tasks[0].id = 1;
+    tasks[0].priority = 1;
+    tasks[0].period = 4;
+    tasks[0].wcet = 1;
+    tasks[0].deadline = 3;
+    tasks[0].release_time = 0;
+
+
+    tasks[1].id = 2;
+    tasks[1].priority = 2;
+    tasks[1].period = 8;
+    tasks[1].wcet = 5;
+    tasks[1].deadline = 6;
+    tasks[1].release_time = 0;
+
+
+    tasks[2].id = 3;
+    tasks[2].priority = 3;
+    tasks[2].period = 16;
+    tasks[2].wcet = 7;
+    tasks[2].deadline = 9;
+    tasks[2].release_time = 0;
+
+    tasks[3].id = 3;
+    tasks[3].priority = 4;
+    tasks[3].period = 32;
+    tasks[3].wcet = 17;
+    tasks[3].deadline = 31;
+    tasks[3].release_time = 0;
+
+
+}
+
+int Calculate_LCM(Task* tasks, int task_number){
+
+    // int Period_arrary[3];
+
+    // for ( int index_task = 1; index_task < task_number; index_task++)
+    // {
+    //     Period_arrary[index_task - 1] = tasks[1].period;
+    // }
+    
+        if (task_number == 0) 
+        {return 0; }
+
+        int result = tasks[0].period;
+
+        for (int i = 1; i < task_number; i++) {
+            result = LCM_two_numbers(result, tasks[i].period);
+        }
+        
+        return result;
+
+    // printf("LCM of given numbers: %d\n", lcm_multiple(numbers, n));
+
+}
+
+
+int main() {
+    srand(time(NULL)); // 初始化随机种子
+
+    int t = 0;   //   Time 
+
+    Set_task(tasks);
+
+    int Current_LCM = Calculate_LCM(tasks,TASK_NUMBER);
+
+    printf("LCM of given numbers: %d\n", Current_LCM);
+
+    while (t < Current_LCM)
+    {
+        
+    }
+    
+
+
+
     return 0;
 }
