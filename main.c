@@ -1,23 +1,41 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
 
-#define TASK_NUMBER 4
+#define NUMBER_TASK 4
+#define NUMBER_PROCESSORS  2
 
 // 任务结构体定义
 typedef struct {
     int id;
     int priority;
     int period;       // 周期 T
-    int wcet;         // 最坏执行时间 C
+    int execution_time;         // 最坏执行时间 C
+    int remaining_time;
     int deadline;     // 截止时间 D（默认等于周期）
     int release_time; // 释放时间（默认0）
+    int next_release_time;
 } Task;
 
+typedef struct {
+    bool Busy_State;
+} Processor;
 
-Task tasks[TASK_NUMBER];
+Processor processor[NUMBER_PROCESSORS] = {
+    {.Busy_State = false},
+    {.Busy_State = false}
+};
 
+Task Global_Tasks[NUMBER_TASK] = {
+    { .id = 0, .priority = 1, .period = 4, .execution_time = 1, .remaining_time = 0, .deadline = 3, .release_time = 0 , .next_release_time = 0 },
+    { .id = 1, .priority = 2, .period = 8, .execution_time = 5, .remaining_time = 0, .deadline = 6, .release_time = 0 , .next_release_time = 0 },
+    { .id = 2, .priority = 3, .period = 16, .execution_time = 7, .remaining_time = 0, .deadline = 9, .release_time = 0 , .next_release_time = 0 },
+    { .id = 3, .priority = 4, .period = 32,  .execution_time = 17, .remaining_time = 0, .deadline = 31, .release_time = 0 , .next_release_time = 0 }
+};
+
+Task Ready_Queue[NUMBER_TASK];
 
 /**
  * 生成符合UUniFast算法的任务集合
@@ -38,81 +56,78 @@ Task tasks[TASK_NUMBER];
     // print_tasks(tasks, n);
 
     // free(tasks); // 释放内存
- */
-Task* generate_task_set(int n, double U, 
-                       double min_period, double max_period,
-                       int max_retries) {
-    // 输入参数校验
-    if (n <= 0 || U < 0 || U > n || 
-        min_period <= 0 || max_period <= min_period) {
-        return NULL;
-    }
-
-    Task* tasks = (Task*)malloc(n * sizeof(Task));
-    if (!tasks) return NULL;
-
-    int valid;
-    for (int retry = 0; retry < max_retries; retry++) {
-        valid = 1;
-        double remaining_U = U;
-
-        // 生成前n-1个任务
-        for (int i = 0; i < n-1; i++) {
-            // 生成随机数s ∈ [0,1)
-            double s = (double)rand() / RAND_MAX;
-            
-            // 计算利用率 u_i = U_remaining * (1 - s^(1/(n-i)))
-            double exponent = 1.0 / (n - i - 1);
-            double u_i = remaining_U * (1 - pow(s, exponent));
-
-            // 合法性检查
-            if (u_i < 0 || u_i > 1.0) {
-                valid = 0;
-                break;
-            }
-
-            // 生成周期 T_i ∈ [min_period, max_period]
-            double T_i = min_period + 
-                        ((double)rand() / RAND_MAX) * (max_period - min_period);
-            
-            // 计算最坏执行时间 C_i = u_i * T_i
-            double C_i = u_i * T_i;
-
-            // 写入任务结构体
-            tasks[i].period = T_i;
-            tasks[i].wcet = C_i;
-            tasks[i].deadline = T_i;    // 截止时间等于周期
-            tasks[i].release_time = 0.0; // 释放时间默认为0
-
-            remaining_U -= u_i;
-        }
-
-        // 处理最后一个任务
-        if (valid) {
-            double u_last = remaining_U;
-            if (u_last < 0 || u_last > 1.0) {
-                valid = 0;
-            } else {
-                // 生成最后一个任务的参数
-                double T_last = min_period + 
-                               ((double)rand() / RAND_MAX) * (max_period - min_period);
-                double C_last = u_last * T_last;
-
-                tasks[n-1].period = T_last;
-                tasks[n-1].wcet = C_last;
-                tasks[n-1].deadline = T_last;
-                tasks[n-1].release_time = 0.0;
-            }
-        }
-
-        if (valid) {
-            return tasks; // 生成成功
-        }
-    }
-
-    free(tasks); // 超过最大重试次数
-    return NULL;
-}
+ 
+// // Task* generate_task_set(int n, double U, 
+// //                        double min_period, double max_period,
+// //                        int max_retries) {
+//     // 输入参数校验
+//     if (n <= 0 || U < 0 || U > n || 
+//         min_period <= 0 || max_period <= min_period) {
+//         return NULL;
+//     }
+//     Task* tasks = (Task*)malloc(n * sizeof(Task));
+//     if (!tasks) return NULL;
+//     int valid;
+//     for (int retry = 0; retry < max_retries; retry++) {
+//         valid = 1;
+//         double remaining_U = U;
+//         // 生成前n-1个任务
+//         for (int i = 0; i < n-1; i++) {
+//             // 生成随机数s ∈ [0,1)
+//             double s = (double)rand() / RAND_MAX;
+//
+//             // 计算利用率 u_i = U_remaining * (1 - s^(1/(n-i)))
+//             double exponent = 1.0 / (n - i - 1);
+//             double u_i = remaining_U * (1 - pow(s, exponent));
+//
+//             // 合法性检查
+//             if (u_i < 0 || u_i > 1.0) {
+//                 valid = 0;
+//                 break;
+//             }
+//
+//             // 生成周期 T_i ∈ [min_period, max_period]
+//             double T_i = min_period + 
+//                         ((double)rand() / RAND_MAX) * (max_period - min_period);
+//          
+//             // 计算最坏执行时间 C_i = u_i * T_i
+//             double C_i = u_i * T_i;
+//
+//             // 写入任务结构体
+//             tasks[i].period = T_i;
+//             tasks[i].wcet = C_i;
+//             tasks[i].deadline = T_i;    // 截止时间等于周期
+//             tasks[i].release_time = 0.0; // 释放时间默认为0
+//
+//             remaining_U -= u_i;
+//         }
+//
+//         // 处理最后一个任务
+//         if (valid) {
+//             double u_last = remaining_U;
+//             if (u_last < 0 || u_last > 1.0) {
+//                 valid = 0;
+//             } else {
+//                 // 生成最后一个任务的参数
+//                 double T_last = min_period + 
+//                                ((double)rand() / RAND_MAX) * (max_period - min_period);
+//                 double C_last = u_last * T_last;
+//
+//                 tasks[n-1].period = T_last;
+//                 tasks[n-1].wcet = C_last;
+//                 tasks[n-1].deadline = T_last;
+//                 tasks[n-1].release_time = 0.0;
+//             }
+//         }
+//
+//         if (valid) {
+//             return tasks; // 生成成功
+//         }
+//     }
+//
+//     free(tasks); // 超过最大重试次数
+//     return NULL;
+// }
 
 // 打印任务集详细信息
 void print_tasks(Task* tasks, int n) {
@@ -130,7 +145,7 @@ void print_tasks(Task* tasks, int n) {
     }
     printf("Total Utilization: %.4f / %.4f\n", total_utilization, total_utilization);
 }
-
+*/
 int LCM_two_numbers(int num_1, int num_2){
 
     int a = num_1;
@@ -149,40 +164,32 @@ int LCM_two_numbers(int num_1, int num_2){
 
 }
 
-void Set_task(Task* tasks){
-
-    tasks[0].id = 1;
-    tasks[0].priority = 1;
-    tasks[0].period = 4;
-    tasks[0].wcet = 1;
-    tasks[0].deadline = 3;
-    tasks[0].release_time = 0;
-
-
-    tasks[1].id = 2;
-    tasks[1].priority = 2;
-    tasks[1].period = 8;
-    tasks[1].wcet = 5;
-    tasks[1].deadline = 6;
-    tasks[1].release_time = 0;
-
-
-    tasks[2].id = 3;
-    tasks[2].priority = 3;
-    tasks[2].period = 16;
-    tasks[2].wcet = 7;
-    tasks[2].deadline = 9;
-    tasks[2].release_time = 0;
-
-    tasks[3].id = 3;
-    tasks[3].priority = 4;
-    tasks[3].period = 32;
-    tasks[3].wcet = 17;
-    tasks[3].deadline = 31;
-    tasks[3].release_time = 0;
-
-
-}
+// void Set_task(Task* tasks){
+//     tasks[0].id = 1;
+//     tasks[0].priority = 1;
+//     tasks[0].period = 4;
+//     tasks[0].wcet = 1;
+//     tasks[0].deadline = 3;
+//     tasks[0].release_time = 0;
+//     tasks[1].id = 2;
+//     tasks[1].priority = 2;
+//     tasks[1].period = 8;
+//     tasks[1].wcet = 5;
+//     tasks[1].deadline = 6;
+//     tasks[1].release_time = 0;
+//     tasks[2].id = 3;
+//     tasks[2].priority = 3;
+//     tasks[2].period = 16;
+//     tasks[2].wcet = 7;
+//     tasks[2].deadline = 9;
+//     tasks[2].release_time = 0;
+//     tasks[3].id = 3;
+//     tasks[3].priority = 4;
+//     tasks[3].period = 32;
+//     tasks[3].wcet = 17;
+//     tasks[3].deadline = 31;
+//     tasks[3].release_time = 0;
+// }
 
 int Calculate_LCM(Task* tasks, int task_number){
 
@@ -208,23 +215,58 @@ int Calculate_LCM(Task* tasks, int task_number){
 
 }
 
+void Add_Task_to_RQ(){
+
+    int ready_count = 0;
+
+    for(int i = 0; i < NUMBER_TASK; i++){
+        if(Global_Tasks[i].remaining_time > 0) {
+            Ready_Queue[ready_count++] = Global_Tasks[i];
+        }
+    }
+
+}
+
+int check_processor_idle(Processor* processor){
+ 
+    for (int i = 0; i < NUMBER_PROCESSORS; i++)
+    {
+        if(processor[i].Busy_State == false) {
+            return i;
+        }
+    }
+    
+}
 
 int main() {
-    srand(time(NULL)); // 初始化随机种子
+
+    srand(time(NULL)); // random seed
 
     int t = 0;   //   Time 
 
-    Set_task(tasks);
+    // Set_task(tasks);
 
-    int Current_LCM = Calculate_LCM(tasks,TASK_NUMBER);
+    int Current_LCM = Calculate_LCM(Global_Tasks,NUMBER_TASK);
 
-    printf("LCM of given numbers: %d\n", Current_LCM);
+    printf("LCM of Tasks' period: %d\n", Current_LCM);
 
-    while (t < Current_LCM)
-    {
-        
+    /** 
+
+    // while (t < Current_LCM)
+    // {
+
+    add task to ready queue
+
+    if processor is idle{
+    pick one from rq
     }
+        
+    // }
+        
     
+    */
+ 
+
 
 
 
