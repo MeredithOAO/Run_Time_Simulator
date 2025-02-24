@@ -20,12 +20,14 @@ typedef struct {
 } Task;
 
 typedef struct {
+    int processor_id;
+    int runnin_task_id;
     bool Busy_State;
 } Processor;
 
 Processor processor[NUMBER_PROCESSORS] = {
-    {.Busy_State = false},
-    {.Busy_State = false}
+    {.processor_id = 0, .runnin_task_id = -1, .Busy_State = false},
+    {.processor_id = 1, .runnin_task_id = -1, .Busy_State = false}
 };
 
 Task Global_Tasks[NUMBER_TASK] = {
@@ -37,7 +39,7 @@ Task Global_Tasks[NUMBER_TASK] = {
 
 Task Ready_Queue[NUMBER_TASK];
 
-/**
+/** generate_task_set
  * 生成符合UUniFast算法的任务集合
  * @param n 任务数量
  * @param U 总利用率
@@ -248,31 +250,93 @@ int Add_Task_to_RQ(Task* Global_Tasks){
     return Ready_Task_Count;
 }
 
-int check_processor_idle(Processor* processor){
+int check_processor_idle_count(Processor* processor){
  
+    int idle_processor_count = 0;
+
     for (int i = 0; i < NUMBER_PROCESSORS; i++)
     {
         if(processor[i].Busy_State == false) {
-            return i;
+            idle_processor_count++;
         }
+        return idle_processor_count;
     }
     
 }
 
-int main() {
+void Run_Task_one_step(Task* Global_Tasks, Task* Ready_Queue, int current_time, int Num_Task_need_run){
+
+
+    printf("Time %d: \n", current_time);
+        // 对被选中的任务执行 1 个时间单位
+            for(int i = 0; i < Num_Task_need_run; i++){
+                
+                int running_id = Ready_Queue[i].id;
+
+                // 在原始任务数组中找到对应任务，剩余执行时间减 1
+                Global_Tasks[running_id].remaining_time--;
+
+                // 如果任务执行完成，则设置它的下一次释放时刻
+                if(Global_Tasks[running_id].remaining_time == 0) {
+                    Global_Tasks[running_id].next_release_time = current_time + Global_Tasks[running_id].period;
+                }
+
+                printf("Running tasks id %d \n", Global_Tasks[running_id].id);
+
+            }
+
+}
+
+
+void main() {
 
     srand(time(NULL)); // random seed
 
     int current_time = 0;   //   Time 
 
     // Set_task(tasks);
-    check_realse(current_time);
 
-    int Current_LCM = Calculate_LCM(Global_Tasks,NUMBER_TASK);
+    int Simulation_time = Calculate_LCM(Global_Tasks,NUMBER_TASK);
 
-    int Ready_Task_Count = Add_Task_to_RQ(Global_Tasks);
+    for(current_time = 0; current_time < Simulation_time; current_time++) {
 
-    qsort(Ready_Queue, Ready_Task_Count, sizeof(Task), compare_task_priority);
+        check_realse(current_time);
+
+        int Ready_Task_Count = Add_Task_to_RQ(Global_Tasks);
+
+        qsort(Ready_Queue, Ready_Task_Count, sizeof(Task), compare_task_priority);
+
+        int idle_processor_count = check_processor_idle_count(processor);
+        
+
+        if (Ready_Task_Count < NUMBER_PROCESSORS)// check RQ
+        {
+            //run all task in RQ
+            Run_Task_one_step(Global_Tasks, Ready_Queue, current_time, Ready_Task_Count);
+        }
+
+        if (Ready_Task_Count > NUMBER_PROCESSORS)
+        {
+            Run_Task_one_step(Global_Tasks, Ready_Queue, current_time, NUMBER_PROCESSORS);
+        }
+        
+        // printf("Time %d: Running tasks [ ", current_time);
+        // for(int i = 0; i < tasks_to_run; i++){
+        //     printf("%d ", ready_tasks[i].task_id);
+        // }
+        // printf("]\n");
+
+    }
+
+    
+
+    
+
+    
+
+    
+
+    // int tasks_to_run = (ready_count < NUM_PROCESSORS) ? ready_count : NUM_PROCESSORS;
 
     // for (int i = 0; i < NUMBER_TASK; i++)
     // {
@@ -308,5 +372,5 @@ int main() {
 
 
 
-    return 0;
+    // return 0;
 }

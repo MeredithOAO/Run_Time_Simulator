@@ -47,6 +47,7 @@ int main(void) {
 
     // 模拟时间从 0 到 SIMULATION_TIME-1
     for(int t = 0; t < SIMULATION_TIME; t++) {
+        
         // 1) 检查是否有任务在时刻 t 激活 (next_release_time == t)
         for(int i = 0; i < NUM_TASKS; i++){
             // 如果当前时刻到达某任务的释放时刻，就绪并重置其剩余执行时间
