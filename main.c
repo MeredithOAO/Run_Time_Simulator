@@ -215,16 +215,37 @@ int Calculate_LCM(Task* tasks, int task_number){
 
 }
 
-void Add_Task_to_RQ(){
 
-    int ready_count = 0;
+void check_realse(int current_time){
+
+        // 1) 检查是否有任务在时刻 t 激活 (next_release_time == t)
+        for(int i = 0; i < NUMBER_TASK; i++){
+            // 如果当前时刻到达某任务的释放时刻，就绪并重置其剩余执行时间
+            if(Global_Tasks[i].next_release_time == current_time) {
+                Global_Tasks[i].remaining_time = Global_Tasks[i].execution_time;
+            }
+        }
+
+}
+
+int compare_task_priority(const void* a, const void* b) {
+    Task* ta = (Task*)a;
+    Task* tb = (Task*)b;
+    // 数值越小优先级越高，所以按 priority 升序排序
+    return (ta->priority - tb->priority);
+}
+
+int Add_Task_to_RQ(Task* Global_Tasks){
+
+    int Ready_Task_Count = 0;
 
     for(int i = 0; i < NUMBER_TASK; i++){
         if(Global_Tasks[i].remaining_time > 0) {
-            Ready_Queue[ready_count++] = Global_Tasks[i];
+            Ready_Queue[Ready_Task_Count++] = Global_Tasks[i];
         }
     }
 
+    return Ready_Task_Count;
 }
 
 int check_processor_idle(Processor* processor){
@@ -242,13 +263,26 @@ int main() {
 
     srand(time(NULL)); // random seed
 
-    int t = 0;   //   Time 
+    int current_time = 0;   //   Time 
 
     // Set_task(tasks);
+    check_realse(current_time);
 
     int Current_LCM = Calculate_LCM(Global_Tasks,NUMBER_TASK);
 
-    printf("LCM of Tasks' period: %d\n", Current_LCM);
+    int Ready_Task_Count = Add_Task_to_RQ(Global_Tasks);
+
+    qsort(Ready_Queue, Ready_Task_Count, sizeof(Task), compare_task_priority);
+
+    // for (int i = 0; i < NUMBER_TASK; i++)
+    // {
+    //     printf("Ready Queue %d is Task: %d\n", i , Ready_Queue[i].id);
+    // }
+    
+    // printf("LCM of Tasks' period: %d\n", Current_LCM);
+
+    // printf("LCM of Tasks' period: %d\n", Current_LCM);
+
 
     /** 
 
@@ -256,6 +290,10 @@ int main() {
     // {
 
     add task to ready queue
+
+    //sort it based on priority
+    qsort(Ready_Queue, Ready_Task_Count, sizeof(Task), compare_task_priority);
+
 
     if processor is idle{
     pick one from rq
