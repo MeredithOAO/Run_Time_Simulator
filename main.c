@@ -7,15 +7,21 @@
 #define NUMBER_TASK 4
 #define NUMBER_PROCESSORS  2
 
-// 任务结构体定义
+#define Generate_test_on 0
+#define Generate_and_run_test_on 0
+#define TOTAL_UTILIZATION 2.8
+#define MIN_PERIOD 2
+#define MAX_PERIOD 40
+
 typedef struct {
     int id;
     int priority;
-    int period;       // 周期 T
-    int execution_time;         // 最坏执行时间 C
+    int period;       
+    int execution_time;         
     int remaining_time;
-    int deadline;     // 截止时间 D（默认等于周期）
-    int release_time; // 释放时间（默认0）
+    int deadline;
+    int next_deadline;     
+    int release_time; 
     int next_release_time;
 } Task;
 
@@ -31,123 +37,60 @@ Processor processor[NUMBER_PROCESSORS] = {
 };
 
 Task Global_Tasks[NUMBER_TASK] = {
-    { .id = 0, .priority = 1, .period = 4, .execution_time = 1, .remaining_time = 0, .deadline = 3, .release_time = 0 , .next_release_time = 0 },
-    { .id = 1, .priority = 2, .period = 8, .execution_time = 5, .remaining_time = 0, .deadline = 6, .release_time = 0 , .next_release_time = 0 },
-    { .id = 2, .priority = 3, .period = 16, .execution_time = 7, .remaining_time = 0, .deadline = 9, .release_time = 0 , .next_release_time = 0 },
-    { .id = 3, .priority = 4, .period = 32,  .execution_time = 17, .remaining_time = 0, .deadline = 31, .release_time = 0 , .next_release_time = 0 }
+    { .id = 0, .priority = 1, .period = 4,   .execution_time = 1,  .remaining_time = 0, .deadline = 3,  .next_deadline = 3,  .release_time = 0, .next_release_time = 0 },
+    { .id = 1, .priority = 2, .period = 8,   .execution_time = 5,  .remaining_time = 0, .deadline = 6,  .next_deadline = 6,  .release_time = 0, .next_release_time = 0 },
+    { .id = 2, .priority = 3, .period = 16,  .execution_time = 7,  .remaining_time = 0, .deadline = 9,  .next_deadline = 9,  .release_time = 0, .next_release_time = 0 },
+    { .id = 3, .priority = 4, .period = 32,  .execution_time = 17, .remaining_time = 0, .deadline = 31, .next_deadline = 31, .release_time = 0, .next_release_time = 0 }
 };
 
-Task Ready_Queue[NUMBER_TASK];
+void generate_task_set(Task *tasks, int num_tasks, double total_util, int min_period, int max_period)
+{
+//
+double *util = (double *)malloc(sizeof(double) * num_tasks);
+double sumU = total_util;
+int i;
 
-/** generate_task_set
- * 生成符合UUniFast算法的任务集合
- * @param n 任务数量
- * @param U 总利用率
- * @param min_period 最小周期
- * @param max_period 最大周期
- * @param max_retries 最大重试次数
- * @return 生成的任务数组指针，失败返回NULL
- *     // 生成任务集
-    // Task* tasks = generate_task_set(n, U, min_period, max_period, max_retries);
-    // if (!tasks) {
-    //     printf("生成失败，请检查输入参数！\n");
-    //     return 1;
-    // }
-
-    // 打印结果
-    // print_tasks(tasks, n);
-
-    // free(tasks); // 释放内存
- 
-// // Task* generate_task_set(int n, double U, 
-// //                        double min_period, double max_period,
-// //                        int max_retries) {
-//     // 输入参数校验
-//     if (n <= 0 || U < 0 || U > n || 
-//         min_period <= 0 || max_period <= min_period) {
-//         return NULL;
-//     }
-//     Task* tasks = (Task*)malloc(n * sizeof(Task));
-//     if (!tasks) return NULL;
-//     int valid;
-//     for (int retry = 0; retry < max_retries; retry++) {
-//         valid = 1;
-//         double remaining_U = U;
-//         // 生成前n-1个任务
-//         for (int i = 0; i < n-1; i++) {
-//             // 生成随机数s ∈ [0,1)
-//             double s = (double)rand() / RAND_MAX;
-//
-//             // 计算利用率 u_i = U_remaining * (1 - s^(1/(n-i)))
-//             double exponent = 1.0 / (n - i - 1);
-//             double u_i = remaining_U * (1 - pow(s, exponent));
-//
-//             // 合法性检查
-//             if (u_i < 0 || u_i > 1.0) {
-//                 valid = 0;
-//                 break;
-//             }
-//
-//             // 生成周期 T_i ∈ [min_period, max_period]
-//             double T_i = min_period + 
-//                         ((double)rand() / RAND_MAX) * (max_period - min_period);
-//          
-//             // 计算最坏执行时间 C_i = u_i * T_i
-//             double C_i = u_i * T_i;
-//
-//             // 写入任务结构体
-//             tasks[i].period = T_i;
-//             tasks[i].wcet = C_i;
-//             tasks[i].deadline = T_i;    // 截止时间等于周期
-//             tasks[i].release_time = 0.0; // 释放时间默认为0
-//
-//             remaining_U -= u_i;
-//         }
-//
-//         // 处理最后一个任务
-//         if (valid) {
-//             double u_last = remaining_U;
-//             if (u_last < 0 || u_last > 1.0) {
-//                 valid = 0;
-//             } else {
-//                 // 生成最后一个任务的参数
-//                 double T_last = min_period + 
-//                                ((double)rand() / RAND_MAX) * (max_period - min_period);
-//                 double C_last = u_last * T_last;
-//
-//                 tasks[n-1].period = T_last;
-//                 tasks[n-1].wcet = C_last;
-//                 tasks[n-1].deadline = T_last;
-//                 tasks[n-1].release_time = 0.0;
-//             }
-//         }
-//
-//         if (valid) {
-//             return tasks; // 生成成功
-//         }
-//     }
-//
-//     free(tasks); // 超过最大重试次数
-//     return NULL;
-// }
-
-// 打印任务集详细信息
-void print_tasks(Task* tasks, int n) {
-    double total_utilization = 0;
-    printf("ID\tPeriod\tWCET\tDeadline\tUtilization\n");
-    for (int i = 0; i < n; i++) {
-        double utilization = tasks[i].wcet / tasks[i].period;
-        total_utilization += utilization;
-        printf("%d\t%d\t%d\t%d\t\t%.4f\n", 
-              i+1, 
-              tasks[i].period,
-              tasks[i].wcet,
-              tasks[i].deadline,
-              utilization);
-    }
-    printf("Total Utilization: %.4f / %.4f\n", total_utilization, total_utilization);
+// UUnifast allocate the Utilization
+for (i = 0; i < num_tasks - 1; i++) {
+double rand_val = (double)rand() / RAND_MAX;  // rand [0,1) 
+// ui = sumU * (1 - x^(1/(n-i)))
+double tmp = pow(rand_val, 1.0 / (num_tasks - i - 1));
+util[i] = sumU * (1 - tmp);
+sumU = sumU * tmp;
 }
-*/
+// last task
+util[num_tasks - 1] = sumU;
+
+// period and c
+for (i = 0; i < num_tasks; i++) {
+// [min_period, max_period]
+int period = (rand() % (max_period - min_period + 1)) + min_period;
+
+// c = ui * period
+// 向上取整，以保证任务 C_i 不为 0
+int execution_time = (int)ceil(util[i] * period);
+if (execution_time < 1) {
+execution_time = 1;  // c >= 1
+}
+
+// 
+tasks[i].id              = i;
+tasks[i].priority        = i + 1; 
+tasks[i].period          = period;
+tasks[i].execution_time  = execution_time;
+tasks[i].remaining_time  = 0;
+
+// deadline = period 
+tasks[i].deadline        = period;
+tasks[i].next_deadline   = period; 
+tasks[i].release_time    = 0;
+tasks[i].next_release_time = 0;
+}
+
+free(util);
+}
+
+
 int LCM_two_numbers(int num_1, int num_2){
 
     int a = num_1;
@@ -165,33 +108,6 @@ int LCM_two_numbers(int num_1, int num_2){
          return LCM_num_1_2;
 
 }
-
-// void Set_task(Task* tasks){
-//     tasks[0].id = 1;
-//     tasks[0].priority = 1;
-//     tasks[0].period = 4;
-//     tasks[0].wcet = 1;
-//     tasks[0].deadline = 3;
-//     tasks[0].release_time = 0;
-//     tasks[1].id = 2;
-//     tasks[1].priority = 2;
-//     tasks[1].period = 8;
-//     tasks[1].wcet = 5;
-//     tasks[1].deadline = 6;
-//     tasks[1].release_time = 0;
-//     tasks[2].id = 3;
-//     tasks[2].priority = 3;
-//     tasks[2].period = 16;
-//     tasks[2].wcet = 7;
-//     tasks[2].deadline = 9;
-//     tasks[2].release_time = 0;
-//     tasks[3].id = 3;
-//     tasks[3].priority = 4;
-//     tasks[3].period = 32;
-//     tasks[3].wcet = 17;
-//     tasks[3].deadline = 31;
-//     tasks[3].release_time = 0;
-// }
 
 int Calculate_LCM(Task* tasks, int task_number){
 
@@ -220,13 +136,33 @@ int Calculate_LCM(Task* tasks, int task_number){
 
 void check_realse(int current_time){
 
-        // 1) 检查是否有任务在时刻 t 激活 (next_release_time == t)
+        // 
         for(int i = 0; i < NUMBER_TASK; i++){
-            // 如果当前时刻到达某任务的释放时刻，就绪并重置其剩余执行时间
+            //
             if(Global_Tasks[i].next_release_time == current_time) {
-                Global_Tasks[i].remaining_time = Global_Tasks[i].execution_time;
+                Global_Tasks[i].remaining_time = Global_Tasks[i].execution_time; // set remaining_time
+                Global_Tasks[i].next_release_time = current_time + Global_Tasks[i].period; //update next_release_time
             }
         }
+
+}
+
+void check_deadline(int current_time){
+
+    
+    for(int i = 0; i < NUMBER_TASK; i++){
+        
+        if(Global_Tasks[i].next_deadline == current_time) {
+
+            if (Global_Tasks[i].remaining_time > 0)
+            {
+                printf("Tasks:%d miss the deadline at time %d \n", Global_Tasks[i].id, current_time);
+            }
+            Global_Tasks[i].next_deadline = current_time + Global_Tasks[i].next_release_time;
+
+
+        }
+    }
 
 }
 
@@ -237,7 +173,7 @@ int compare_task_priority(const void* a, const void* b) {
     return (ta->priority - tb->priority);
 }
 
-int Add_Task_to_RQ(Task* Global_Tasks){
+int Add_Task_to_RQ(Task* Global_Tasks, Task* Ready_Queue){
 
     int Ready_Task_Count = 0;
 
@@ -266,25 +202,31 @@ int check_processor_idle_count(Processor* processor){
 
 void Run_Task_one_step(Task* Global_Tasks, Task* Ready_Queue, int current_time, int Num_Task_need_run){
 
-
-    printf("Time %d: \n", current_time);
-        // 对被选中的任务执行 1 个时间单位
             for(int i = 0; i < Num_Task_need_run; i++){
                 
                 int running_id = Ready_Queue[i].id;
 
-                // 在原始任务数组中找到对应任务，剩余执行时间减 1
+                // running for 1 time
                 Global_Tasks[running_id].remaining_time--;
-
-                // 如果任务执行完成，则设置它的下一次释放时刻
-                if(Global_Tasks[running_id].remaining_time == 0) {
-                    Global_Tasks[running_id].next_release_time = current_time + Global_Tasks[running_id].period;
-                }
 
                 printf("Running tasks id %d \n", Global_Tasks[running_id].id);
 
             }
 
+}
+
+void reset_tasks_queue(Task* tasks_queue, int num_tasks) {
+    for (int i = 0; i < num_tasks; i++) {
+        tasks_queue[i].id = -1;
+        tasks_queue[i].priority = 9999;
+        tasks_queue[i].period = -1;
+        tasks_queue[i].execution_time = -1;
+        tasks_queue[i].remaining_time = -1;
+        tasks_queue[i].deadline = -1;
+        tasks_queue[i].next_deadline = -1;
+        tasks_queue[i].release_time = -1;
+        tasks_queue[i].next_release_time = -1;
+    }
 }
 
 
@@ -294,83 +236,81 @@ void main() {
 
     int current_time = 0;   //   Time 
 
-    // Set_task(tasks);
+    if (Generate_test_on)
+    {
+
+    //generate_task_set 
+    generate_task_set(Global_Tasks, NUMBER_TASK, TOTAL_UTILIZATION, MIN_PERIOD, MAX_PERIOD);
+    float Real_utilization = 0;
+    for (int i = 0; i < NUMBER_TASK; i++)
+    {
+        printf("Task %d State: priority:%d period:%d  execution_time:%d remaining_time:%d ", Global_Tasks[i].id, Global_Tasks[i].priority, Global_Tasks[i].period, Global_Tasks[i].execution_time, Global_Tasks[i].remaining_time);
+        printf("deadline:%d next_deadline:%d release_time:%d next_release_time:%d \n", Global_Tasks[i].deadline, Global_Tasks[i].next_deadline, Global_Tasks[i].release_time, Global_Tasks[i].next_release_time);
+        Real_utilization = Real_utilization + (float)Global_Tasks[i].execution_time / Global_Tasks[i].period;
+    }
+
+
+
+    printf("Set Utilization: %f Real Utilization: %f \n",TOTAL_UTILIZATION,Real_utilization);
 
     int Simulation_time = Calculate_LCM(Global_Tasks,NUMBER_TASK);
+    printf("LCM = %d \n",Simulation_time);
+
+    }
+    
+
+    
+    if (!Generate_test_on || (Generate_and_run_test_on && Generate_test_on))
+{
+    int Simulation_time = Calculate_LCM(Global_Tasks,NUMBER_TASK);
+
+    printf("LCM = %d \n",Simulation_time);
+
+
+
+
+   
+    
+
 
     for(current_time = 0; current_time < Simulation_time; current_time++) {
+        
+        printf("Time %d: \n", current_time);
+
+        Task Ready_Queue[NUMBER_TASK];
 
         check_realse(current_time);
+        check_deadline(current_time);
 
-        int Ready_Task_Count = Add_Task_to_RQ(Global_Tasks);
+        int Ready_Task_Count = Add_Task_to_RQ(Global_Tasks, Ready_Queue);
 
         qsort(Ready_Queue, Ready_Task_Count, sizeof(Task), compare_task_priority);
 
         int idle_processor_count = check_processor_idle_count(processor);
-        
+    
 
-        if (Ready_Task_Count < NUMBER_PROCESSORS)// check RQ
-        {
-            //run all task in RQ
-            Run_Task_one_step(Global_Tasks, Ready_Queue, current_time, Ready_Task_Count);
-        }
-
-        if (Ready_Task_Count > NUMBER_PROCESSORS)
+        if (Ready_Task_Count >= NUMBER_PROCESSORS)
         {
             Run_Task_one_step(Global_Tasks, Ready_Queue, current_time, NUMBER_PROCESSORS);
         }
         
-        // printf("Time %d: Running tasks [ ", current_time);
-        // for(int i = 0; i < tasks_to_run; i++){
-        //     printf("%d ", ready_tasks[i].task_id);
-        // }
-        // printf("]\n");
-
-    }
-
-    
-
-    
-
-    
-
-    
-
-    // int tasks_to_run = (ready_count < NUM_PROCESSORS) ? ready_count : NUM_PROCESSORS;
-
-    // for (int i = 0; i < NUMBER_TASK; i++)
-    // {
-    //     printf("Ready Queue %d is Task: %d\n", i , Ready_Queue[i].id);
-    // }
-    
-    // printf("LCM of Tasks' period: %d\n", Current_LCM);
-
-    // printf("LCM of Tasks' period: %d\n", Current_LCM);
-
-
-    /** 
-
-    // while (t < Current_LCM)
-    // {
-
-    add task to ready queue
-
-    //sort it based on priority
-    qsort(Ready_Queue, Ready_Task_Count, sizeof(Task), compare_task_priority);
-
-
-    if processor is idle{
-    pick one from rq
-    }
+        if (Ready_Task_Count < NUMBER_PROCESSORS)
+        {
+            Run_Task_one_step(Global_Tasks, Ready_Queue, current_time, Ready_Task_Count);
+        }
         
-    // }
         
-    
-    */
  
 
+        // for (int i = 0; i < NUMBER_TASK; i++)
+        // {
+        //     printf("Task %d State: priority:%d remaining_time:%d next_release_time:%d \n", Global_Tasks[i].id, Global_Tasks[i].priority, Global_Tasks[i].remaining_time, Global_Tasks[i].next_release_time);
+        // }
 
 
-
-    // return 0;
+        reset_tasks_queue(Ready_Queue,NUMBER_TASK);
+    }
 }
+}
+
+//./main.exe | tee output.txt
