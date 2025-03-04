@@ -6,56 +6,99 @@
 
 #include "Task_generate.h"
 
-
-
-
-void generate_task_set(Task *tasks, int num_tasks, double total_util, int min_period, int max_period)
-{
-//
-double *util = (double *)malloc(sizeof(double) * num_tasks);
-double sumU = total_util;
-int i;
-
-// UUnifast allocate the Utilization
-for (i = 0; i < num_tasks - 1; i++) {
-double rand_val = (double)rand() / RAND_MAX;  // rand [0,1) 
-// ui = sumU * (1 - x^(1/(n-i)))
-double tmp = pow(rand_val, 1.0 / (num_tasks - i - 1));
-util[i] = sumU * (1 - tmp);
-sumU = sumU * tmp;
-}
-// last task
-util[num_tasks - 1] = sumU;
-
-// period and c
-for (i = 0; i < num_tasks; i++) {
-// [min_period, max_period]
-int period = (rand() % (max_period - min_period + 1)) + min_period;
-
-// c = ui * period
-// 向上取整，以保证任务 C_i 不为 0
-int execution_time = (int)ceil(util[i] * period);
-if (execution_time < 1) {
-execution_time = 1;  // c >= 1
+int compare_increasing(const void *a, const void *b) {
+    return (*(int *)a - *(int *)b); 
 }
 
-// 
-tasks[i].id              = i;
-tasks[i].priority        = i + 1; 
-tasks[i].period          = period;
-tasks[i].execution_time  = execution_time;
-tasks[i].remaining_time  = 0;
+void Unifast_allocate(double U_total){
+    
+    for (int i = 0; i < NUMBER_TASK - 1; i++) {
 
-// deadline = period 
-tasks[i].deadline        = period;
-tasks[i].next_deadline   = period; 
-tasks[i].release_time    = 0;
-tasks[i].next_release_time = 0;
+        double rand_val = (double)rand() / RAND_MAX;
+        Utilization[i] = U_total * (1 - (double)pow(rand_val, 1.0 / (NUMBER_TASK - i - 1)));
+        U_total = U_total - Utilization[i];
+    }
+
+    Utilization[NUMBER_TASK - 1] = U_total;
+
 }
 
-free(util);
+int check_U(){
+    for (int i = 0; i < NUMBER_TASK; i++)
+    {
+    if (Utilization[i] > 1.0 || Utilization[i] < 0.1)
+    {
+        return 1;
+    }
+    
+    
+    }
+    return 0;
 }
 
+void generate_period(){
+
+    // period // [min_period, max_period]
+    for (int i = 0; i < NUMBER_TASK; i++) {
+        
+        Period[i] = (rand() % (MIN_PERIOD - MAX_PERIOD + 1)) + MIN_PERIOD;
+    }
+
+    qsort(Period, NUMBER_TASK, sizeof(int), compare_increasing);
+    
+}
+
+void generate_task_set(Task *tasks)
+{   
+
+    Unifast_allocate(TOTAL_UTILIZATION);
+
+    while (check_U())
+    {
+        Unifast_allocate(TOTAL_UTILIZATION);
+    }
+    
+    generate_period();
+
+    for (int i = 0; i < NUMBER_TASK; i++)
+    {
+        int execution_time = (int)ceil(Utilization[i] * Period[i]);
+        if (execution_time < 1) {
+        execution_time = 1;  // c >= 1
+        }
+
+        // 
+        tasks[i].id              = i;
+        tasks[i].priority        = i + 1; 
+        tasks[i].period          = Period[i];
+        tasks[i].execution_time  = execution_time;
+        tasks[i].remaining_time  = 0;
+
+        // deadline = period 
+        tasks[i].deadline        = Period[i];
+        tasks[i].next_deadline   = Period[i]; 
+        tasks[i].release_time    = 0;
+        tasks[i].next_release_time = 0;
+
+    }
+    
+
+    // for (int i = 0; i < NUMBER_TASK; i++)
+    // {
+    //     printf("%f %d \n",Utilization[i],Period[i]);
+    // }
+
+
+
+    
+    
+// TOTAL_UTILIZATION  MIN_PERIOD  MAX_PERIOD
+
+
+
+
+
+}
 
 void Print_Task_Set(){
 

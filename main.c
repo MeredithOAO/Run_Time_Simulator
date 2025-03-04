@@ -29,7 +29,7 @@ int main() {
     srand(time(NULL)); // random seed
 
     int current_time = 0;   //   Time 
-
+    int missDeadline_flag = 0;
 if (Self_Test)
 {
     Print_Task_Set();
@@ -41,8 +41,9 @@ if (Self_Test)
     {
        
     //generate_task_set 
-    generate_task_set(Global_Tasks, NUMBER_TASK, TOTAL_UTILIZATION, MIN_PERIOD, MAX_PERIOD);
+    generate_task_set(Global_Tasks);
     Print_Task_Set();
+    print_result_of_DA_LC();
 
     }
     
@@ -58,10 +59,10 @@ if (Self_Test)
 
     for(current_time = 0; current_time < Simulation_time; current_time++) {
         
-        printf("Time %d: \n", current_time);
+        // printf("Time %d: \n", current_time);
 
         Task Ready_Queue[NUMBER_TASK];
-        check_deadline(current_time);
+        missDeadline_flag = check_deadline(current_time);
         check_realse(current_time);
         
 
@@ -69,7 +70,7 @@ if (Self_Test)
 
         qsort(Ready_Queue, Ready_Task_Count, sizeof(Task), compare_task_priority);
 
-        int idle_processor_count = check_processor_idle_count(processor);
+        // int idle_processor_count = check_processor_idle_count(processor);
     
 
         if (Ready_Task_Count >= NUMBER_PROCESSORS)
@@ -93,7 +94,19 @@ if (Self_Test)
 
         reset_tasks_queue(Ready_Queue,NUMBER_TASK);
     }
+
+
+
+    if (!missDeadline_flag)
+    {
+        printf("All Task Meet Deadline");
+    }
+    
+    
 }
+
+
+
 return 0;
 }
 

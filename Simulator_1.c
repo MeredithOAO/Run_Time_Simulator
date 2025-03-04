@@ -62,9 +62,9 @@ void check_realse(int current_time){
 
 }
 
-void check_deadline(int current_time){
+int check_deadline(int current_time){
 
-    
+    int missDeadline_flag = 0;
     for(int i = 0; i < NUMBER_TASK; i++){
         
         if(Global_Tasks[i].next_deadline == current_time) {
@@ -72,13 +72,14 @@ void check_deadline(int current_time){
             if (Global_Tasks[i].remaining_time > 0)
             {
                 printf("Tasks:%d miss the deadline at time %d \n", Global_Tasks[i].id, current_time);
+                missDeadline_flag = 1;
             }
             Global_Tasks[i].next_deadline = current_time + Global_Tasks[i].next_release_time;
 
 
         }
     }
-
+    return missDeadline_flag;
 }
 
 int compare_task_priority(const void* a, const void* b) {
@@ -101,19 +102,19 @@ int Add_Task_to_RQ(Task* Global_Tasks, Task* Ready_Queue){
     return Ready_Task_Count;
 }
 
-int check_processor_idle_count(Processor* processor){
+// int check_processor_idle_count(Processor* processor){
  
-    int idle_processor_count = 0;
+//     int idle_processor_count = 0;
 
-    for (int i = 0; i < NUMBER_PROCESSORS; i++)
-    {
-        if(processor[i].Busy_State == false) {
-            idle_processor_count++;
-        }
-        return idle_processor_count;
-    }
+//     for (int i = 0; i < NUMBER_PROCESSORS; i++)
+//     {
+//         if(processor[i].Busy_State == false) {
+//             idle_processor_count++;
+//         }
+//         return idle_processor_count;
+//     }
     
-}
+// }
 
 void Run_Task_one_step(Task* Global_Tasks, Task* Ready_Queue, int current_time, int Num_Task_need_run){
 
@@ -124,7 +125,7 @@ void Run_Task_one_step(Task* Global_Tasks, Task* Ready_Queue, int current_time, 
                 // running for 1 time
                 Global_Tasks[running_id].remaining_time--;
 
-                printf("Running tasks id %d \n", Global_Tasks[running_id].id);
+                // printf("Running tasks id %d \n", Global_Tasks[running_id].id);
 
             }
 
