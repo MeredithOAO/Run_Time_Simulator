@@ -17,9 +17,9 @@
 #define Simulation_print 1
 #define Self_Test 0
 
-#define TOTAL_UTILIZATION 2.8
+#define TOTAL_UTILIZATION 3.1
 #define MIN_PERIOD 2
-#define MAX_PERIOD 10
+#define MAX_PERIOD 50
 
 typedef struct {
     int id;

@@ -30,6 +30,7 @@ int main() {
 
     int current_time = 0;   //   Time 
     int missDeadline_flag = 0;
+    int DA_LC_flag = 1;
 if (Self_Test)
 {
     Print_Task_Set();
@@ -43,17 +44,22 @@ if (Self_Test)
     //generate_task_set 
     generate_task_set(Global_Tasks);
     Print_Task_Set();
-    print_result_of_DA_LC();
+    DA_LC_flag = print_result_of_DA_LC();
 
     }
     
-
+    if (DA_LC_flag)
+    {
+        printf("\nPass DA-LC Test. No need to run G-FP simulation \n");
+    }else{
+    
+        printf("\nFail DA-LC Test. Need to run G-FP simulation \n");
     
     if (Simulation_print)
 {
     int Simulation_time = Calculate_LCM(Global_Tasks,NUMBER_TASK);
 
-    printf("LCM = %d \n",Simulation_time);
+    printf("\nSimulation Start, Simulation time(LCM) = %d M = %d \n",Simulation_time,NUMBER_PROCESSORS);
 
 
 
@@ -62,7 +68,12 @@ if (Self_Test)
         // printf("Time %d: \n", current_time);
 
         Task Ready_Queue[NUMBER_TASK];
-        missDeadline_flag = check_deadline(current_time);
+        if (check_deadline(current_time))
+        {
+            missDeadline_flag = 1;
+        }
+        
+        
         check_realse(current_time);
         
 
@@ -99,13 +110,16 @@ if (Self_Test)
 
     if (!missDeadline_flag)
     {
-        printf("All Task Meet Deadline");
+        printf("\nSimulation Result: All Task Meet Deadline \n\n");
+    }else {
+
+        printf("\nThese Tasks Miss Deadline. Need to try G-DP Scheduling. \n\n");
     }
     
     
 }
 
-
+}
 
 return 0;
 }

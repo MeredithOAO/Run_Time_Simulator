@@ -14,4 +14,4 @@ int get_total_iNC_of_task_k(int Task_k_index);
 int get_i_Diff(int Task_k_index, int HP_index);
 int get_total_i_Diff(int Task_k_index);
 int check_DA_LC(int Task_k_index);
-void print_result_of_DA_LC();
+int print_result_of_DA_LC();
