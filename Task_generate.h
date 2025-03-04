@@ -1,7 +1,17 @@
-#define TASK_COUNT         5
-#define TOTAL_UTILIZATION  3
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
 
 
-#define MIN_PERIOD 1
-#define MAX_PERIOD 30
+#include "main.h"
+ 
+
+
+//
+
+ void generate_task_set(Task *tasks, int num_tasks, double total_util, int min_period, int max_period);
+ void Print_Task_Set();
+ 
 

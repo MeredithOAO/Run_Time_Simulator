@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"stdlib.h": "c",
+			"stdio.h": "c",
+			"time.h": "c",
+			"math.h": "c",
+			"stdbool.h": "c",
+			"da_lc_test.h": "c",
+			"task_generate.h": "c",
+			"main.h": "c",
+			"simulator_1.h": "c"
+		}
+	}
+}
