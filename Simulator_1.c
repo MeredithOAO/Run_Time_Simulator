@@ -4,7 +4,7 @@
 #include <math.h>
 #include <time.h>
 
-#include "simulator_1.h"
+#include "Simulator_1.h"
 
 
 int LCM_two_numbers(int num_1, int num_2){

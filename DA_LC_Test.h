@@ -1,5 +1,7 @@
 #include "main.h"
 
+int compare_descending(const void *a, const void *b);
+
 int get_I_i_D_Dk_Ck(int Task_k_index, int HP_index);
 int get_total_inter_of_task_k(int Task_k_index);
 int check_DA(int Task_k_index);
@@ -10,3 +12,6 @@ int get_I_i_NC_Dk_Ck(int Task_k_index, int HP_index);
 int get_total_iNC_of_task_k(int Task_k_index);
 
 int get_i_Diff(int Task_k_index, int HP_index);
+int get_total_i_Diff(int Task_k_index);
+int check_DA_LC(int Task_k_index);
+void print_result_of_DA_LC();

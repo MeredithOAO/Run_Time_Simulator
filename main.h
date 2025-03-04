@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+// #define MIN(a, b) ((a) < (b) ? (a) : (b))
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>

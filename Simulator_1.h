@@ -1,5 +1,5 @@
-#ifndef SIMULATOE_1
-#define SIMULATOE_1
+#ifndef SIMULATOR_1
+#define SIMULATOR_1
 
 #include "main.h"
 

@@ -6,6 +6,10 @@
 
 #include "DA_LC_Test.h"
 
+int compare_descending(const void *a, const void *b) {
+    return (*(int *)b - *(int *)a); // Reverse order
+}
+
 int get_I_i_D_Dk_Ck(int Task_k_index, int HP_index){
 
     int D_i = Global_Tasks[HP_index].deadline;
@@ -57,9 +61,9 @@ void print_result_of_DA(){
     for (int Task_k_index = NUMBER_TASK - 1; Task_k_index >= 1; Task_k_index--)
     {
         if (check_DA(Task_k_index)){
-            printf("Task id %d Pass The DA-LC Test \n",Task_k_index);
+            printf("Task id %d Pass The DA Test \n",Task_k_index);
         }else{
-            printf("Task id %d Fail The DA-LC Test \n",Task_k_index);
+            printf("Task id %d Fail The DA Test \n",Task_k_index);
         }
     }
     
@@ -106,9 +110,55 @@ int get_i_Diff(int Task_k_index, int HP_index){
 }
 
 
-//  int get_total_i_Diff(int Task_k_index){
+int get_total_i_Diff(int Task_k_index){
 
-//     int hp[Task_k_index];
+    int All_i_Diff[NUMBER_TASK];
+    int total_i_Diff = 0;
+
+    for (int i_Diff_index = 0; i_Diff_index < NUMBER_TASK; i_Diff_index++)
+    {
+        All_i_Diff[i_Diff_index] = 0;
+    }
     
 
-// }
+    for (int HP_index = 0; HP_index <= Task_k_index - 1 ; HP_index++)
+    {
+        All_i_Diff[HP_index] = get_i_Diff(Task_k_index, HP_index);
+    }
+    
+    qsort(All_i_Diff, NUMBER_TASK, sizeof(int), compare_descending);
+
+    for (int Max_k_m = 0; Max_k_m < NUMBER_PROCESSORS - 1; Max_k_m++)
+    {
+        total_i_Diff = total_i_Diff + All_i_Diff[Max_k_m];
+    }
+    
+    return total_i_Diff;
+
+}
+
+
+int check_DA_LC(int Task_k_index){
+
+    int total_iNC_of_task_k = get_total_iNC_of_task_k(Task_k_index);
+    int total_i_Diff = get_total_i_Diff(Task_k_index);
+   // double a = (double)total_inter_of_task_k / (double)NUMBER_PROCESSORS;
+
+   if((double)Global_Tasks[Task_k_index].deadline >= floor((double)Global_Tasks[Task_k_index].execution_time + ((double)total_iNC_of_task_k + (double)total_i_Diff)/ (double)NUMBER_PROCESSORS)){
+       return 1;
+   }else{
+       return 0;
+   }
+}
+
+void print_result_of_DA_LC(){
+    printf("Result of DA-LC Test:  \n");
+    for (int Task_k_index = NUMBER_TASK - 1; Task_k_index >= 1; Task_k_index--)
+    {
+        if (check_DA_LC(Task_k_index)){
+            printf("Task id %d Pass The DA-LC Test \n",Task_k_index);
+        }else{
+            printf("Task id %d Fail The DA-LC Test \n",Task_k_index);
+        }
+    }
+}

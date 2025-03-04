@@ -24,7 +24,7 @@ Task Global_Tasks[NUMBER_TASK] = {
     { .id = 3, .priority = 4, .period = 32,  .execution_time = 17, .remaining_time = 0, .deadline = 31, .next_deadline = 31, .release_time = 0, .next_release_time = 0 }
 };
 
-void main() {
+int main() {
 
     srand(time(NULL)); // random seed
 
@@ -34,7 +34,7 @@ if (Self_Test)
 {
     Print_Task_Set();
     print_result_of_DA();
-    printf("get_i_Diff: %d \n", get_i_Diff(3,2));
+    print_result_of_DA_LC();
 }
 
     if (Generate_test_on)
@@ -94,6 +94,7 @@ if (Self_Test)
         reset_tasks_queue(Ready_Queue,NUMBER_TASK);
     }
 }
+return 0;
 }
 
 //./main.exe | tee output.txt
