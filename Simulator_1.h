@@ -12,7 +12,7 @@ int Calculate_LCM(Task* tasks, int task_number);
 void check_realse(int current_time);
 
 int check_deadline(int current_time);
-
+float Calculate_Real_U();
 int compare_task_priority(const void* a, const void* b);
 
 int Add_Task_to_RQ(Task* Global_Tasks, Task* Ready_Queue);

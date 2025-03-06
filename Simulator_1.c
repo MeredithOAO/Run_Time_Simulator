@@ -25,6 +25,16 @@ int LCM_two_numbers(int num_1, int num_2){
 
 }
 
+float Calculate_Real_U(){
+
+    float Real_utilization = 0;
+    for (int i = 0; i < NUMBER_TASK; i++)
+    {
+        Real_utilization = Real_utilization + (float)Global_Tasks[i].execution_time / Global_Tasks[i].period;
+    }
+return Real_utilization;
+}
+
 int Calculate_LCM(Task* tasks, int task_number){
 
     // int Period_arrary[3];

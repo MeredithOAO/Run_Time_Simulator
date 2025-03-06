@@ -99,6 +99,22 @@ void check_realse_DP(int Current_time_DP){
 
 }
 
+void Run_Task_one_step_DP(Task* Global_Tasks, Task* Ready_Queue, int current_time, int Num_Task_need_run){
+    // printf("Time %d \n",Current_time_DP);
+    for(int i = 0; i < Num_Task_need_run; i++){
+        
+        int running_id = Ready_Queue[i].id;
+
+        // running for 1 time
+        Global_Tasks[running_id].remaining_time--;
+
+        // printf("Running tasks id %d \n", Global_Tasks[running_id].id);
+
+    }
+
+}
+
+
 void G_DP_Scheduling(int Simulation_time){
     
     int Current_time_DP = 0;
@@ -125,12 +141,12 @@ void G_DP_Scheduling(int Simulation_time){
 
         if (Ready_Task_Count >= NUMBER_PROCESSORS)
         {
-            Run_Task_one_step(Global_Tasks, Ready_Queue_DP, Current_time_DP, NUMBER_PROCESSORS);
+            Run_Task_one_step_DP(Global_Tasks, Ready_Queue_DP, Current_time_DP, NUMBER_PROCESSORS);
         }
         
         if (Ready_Task_Count < NUMBER_PROCESSORS)
         {
-            Run_Task_one_step(Global_Tasks, Ready_Queue_DP, Current_time_DP, Ready_Task_Count);
+            Run_Task_one_step_DP(Global_Tasks, Ready_Queue_DP, Current_time_DP, Ready_Task_Count);
         }
         // Print_Task_Set();
         reset_tasks_queue(Ready_Queue_DP, NUMBER_TASK);
@@ -146,55 +162,3 @@ void G_DP_Scheduling(int Simulation_time){
     
 }
 
-
-// }
-// if (Simulation_print)
-// {
-//     int Simulation_time = Calculate_LCM(Global_Tasks,NUMBER_TASK);
-
-//     printf("\nSimulation Start, Simulation time(LCM) = %d M = %d \n",Simulation_time,NUMBER_PROCESSORS);
-
-
-
-//     for(current_time = 0; current_time < Simulation_time; current_time++) {
-        
-//         // printf("Time %d: \n", current_time);
-
-//         Task Ready_Queue[NUMBER_TASK];
-//         if (check_deadline(current_time))
-//         {
-//             missDeadline_flag = 1;
-//         }
-
-
-//         check_realse(current_time);
-        
-
-//         int Ready_Task_Count = Add_Task_to_RQ(Global_Tasks, Ready_Queue);
-
-//         qsort(Ready_Queue, Ready_Task_Count, sizeof(Task), compare_task_priority);
-
-//         // int idle_processor_count = check_processor_idle_count(processor);
-    
-
-//         if (Ready_Task_Count >= NUMBER_PROCESSORS)
-//         {
-//             Run_Task_one_step(Global_Tasks, Ready_Queue, current_time, NUMBER_PROCESSORS);
-//         }
-        
-//         if (Ready_Task_Count < NUMBER_PROCESSORS)
-//         {
-//             Run_Task_one_step(Global_Tasks, Ready_Queue, current_time, Ready_Task_Count);
-//         }
-        
-        
- 
-
-//         // for (int i = 0; i < NUMBER_TASK; i++)
-//         // {
-//         //     printf("Task %d State: priority:%d remaining_time:%d next_release_time:%d \n", Global_Tasks[i].id, Global_Tasks[i].priority, Global_Tasks[i].remaining_time, Global_Tasks[i].next_release_time);
-//         // }
-
-
-//         reset_tasks_queue(Ready_Queue,NUMBER_TASK);
-//     }

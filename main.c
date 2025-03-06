@@ -45,7 +45,7 @@ if (Self_Test)
     //generate_task_set 
     generate_task_set(Global_Tasks);
 
-        while (Calculate_LCM(Global_Tasks,NUMBER_TASK) > 700000)
+        while (Calculate_LCM(Global_Tasks,NUMBER_TASK) > 2000000 || Calculate_LCM(Global_Tasks,NUMBER_TASK) < 0 || Calculate_Real_U() > (float)NUMBER_PROCESSORS)
         {
             generate_task_set(Global_Tasks);
         }
