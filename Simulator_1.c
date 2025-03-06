@@ -85,8 +85,16 @@ int check_deadline(int current_time){
 int compare_task_priority(const void* a, const void* b) {
     Task* ta = (Task*)a;
     Task* tb = (Task*)b;
-    // 数值越小优先级越高，所以按 priority 升序排序
+
+    if (ta->priority == tb->priority)
+    {
+        return (ta->id - tb->id); //same prioity sort by id, small id hp
+    }else{
+    //  priority small mins hp
     return (ta->priority - tb->priority);
+    }
+    
+
 }
 
 int Add_Task_to_RQ(Task* Global_Tasks, Task* Ready_Queue){
@@ -101,20 +109,6 @@ int Add_Task_to_RQ(Task* Global_Tasks, Task* Ready_Queue){
 
     return Ready_Task_Count;
 }
-
-// int check_processor_idle_count(Processor* processor){
- 
-//     int idle_processor_count = 0;
-
-//     for (int i = 0; i < NUMBER_PROCESSORS; i++)
-//     {
-//         if(processor[i].Busy_State == false) {
-//             idle_processor_count++;
-//         }
-//         return idle_processor_count;
-//     }
-    
-// }
 
 void Run_Task_one_step(Task* Global_Tasks, Task* Ready_Queue, int current_time, int Num_Task_need_run){
 
@@ -134,7 +128,8 @@ void Run_Task_one_step(Task* Global_Tasks, Task* Ready_Queue, int current_time, 
 void reset_tasks_queue(Task* tasks_queue, int num_tasks) {
     for (int i = 0; i < num_tasks; i++) {
         tasks_queue[i].id = -1;
-        tasks_queue[i].priority = 9999;
+        tasks_queue[i].priority = 999999;
+        tasks_queue[i].priority_promotion = 999999;
         tasks_queue[i].period = -1;
         tasks_queue[i].execution_time = -1;
         tasks_queue[i].remaining_time = -1;
@@ -142,5 +137,23 @@ void reset_tasks_queue(Task* tasks_queue, int num_tasks) {
         tasks_queue[i].next_deadline = -1;
         tasks_queue[i].release_time = -1;
         tasks_queue[i].next_release_time = -1;
+        tasks_queue[i].priority_promotion_time = -1;
+        tasks_queue[i].next_priority_promotion_time = -1;
     }
 }
+
+/*
+// int check_processor_idle_count(Processor* processor){
+ 
+//     int idle_processor_count = 0;
+
+//     for (int i = 0; i < NUMBER_PROCESSORS; i++)
+//     {
+//         if(processor[i].Busy_State == false) {
+//             idle_processor_count++;
+//         }
+//         return idle_processor_count;
+//     }
+    
+// }
+*/

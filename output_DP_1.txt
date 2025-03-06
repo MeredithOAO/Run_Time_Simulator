@@ -1,0 +1,70 @@
+Task 0 State: priority:1 period:6  execution_time:1 remaining_time:0 deadline:6 next_deadline:6 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:1 
+Task 1 State: priority:2 period:7  execution_time:1 remaining_time:0 deadline:7 next_deadline:7 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:2 
+Task 2 State: priority:3 period:15  execution_time:3 remaining_time:0 deadline:15 next_deadline:15 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:3 
+Task 3 State: priority:4 period:16  execution_time:6 remaining_time:0 deadline:16 next_deadline:16 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:4 
+Task 4 State: priority:5 period:21  execution_time:3 remaining_time:0 deadline:21 next_deadline:21 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:5 
+Task 5 State: priority:6 period:26  execution_time:4 remaining_time:0 deadline:26 next_deadline:26 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:6 
+Task 6 State: priority:7 period:31  execution_time:5 remaining_time:0 deadline:31 next_deadline:31 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:7 
+Task 7 State: priority:8 period:32  execution_time:6 remaining_time:0 deadline:32 next_deadline:32 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:8
+Task 8 State: priority:9 period:37  execution_time:4 remaining_time:0 deadline:37 next_deadline:37 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:9
+Task 9 State: priority:10 period:41  execution_time:7 remaining_time:0 deadline:41 next_deadline:41 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:10
+Set Utilization: 1.500000 Real Utilization: 1.808857
+LCM = 2054139360
+
+Result of DA-LC Test:
+Task id 9 Fail The DA-LC Test
+Task id 8 Fail The DA-LC Test
+Task id 7 Fail The DA-LC Test
+Task id 6 Pass The DA-LC Test
+Task id 5 Pass The DA-LC Test
+Task id 4 Pass The DA-LC Test
+Task id 3 Pass The DA-LC Test
+Task id 2 Pass The DA-LC Test
+Task id 1 Pass The DA-LC Test
+
+Fail DA-LC Test. Need to run G-FP simulation
+
+Simulation Start, Simulation time(LCM) = 2054139360 M = 2
+Tasks:9 miss the deadline at time 41
+
+These Tasks Miss Deadline. Need to try G-DP Scheduling.
+
+
+Priority Promotion Time Set As Fllow:
+
+Task 0 State: priority:1 period:6  execution_time:1 remaining_time:0 deadline:6 next_deadline:6 release_time:0 next_release_time:0
+Priority Promotion Time:5 next_Priority Promotion Time:5 Priotity_promotion:1
+Task 1 State: priority:2 period:7  execution_time:1 remaining_time:0 deadline:7 next_deadline:7 release_time:0 next_release_time:0
+Priority Promotion Time:5 next_Priority Promotion Time:5 Priotity_promotion:2
+Task 2 State: priority:3 period:15  execution_time:3 remaining_time:0 deadline:15 next_deadline:15 release_time:0 next_release_time:0
+Priority Promotion Time:10 next_Priority Promotion Time:10 Priotity_promotion:3
+Task 3 State: priority:4 period:16  execution_time:6 remaining_time:0 deadline:16 next_deadline:16 release_time:0 next_release_time:0
+Priority Promotion Time:5 next_Priority Promotion Time:5 Priotity_promotion:4
+Task 4 State: priority:5 period:21  execution_time:3 remaining_time:0 deadline:21 next_deadline:21 release_time:0 next_release_time:0
+Priority Promotion Time:7 next_Priority Promotion Time:7 Priotity_promotion:5
+Task 5 State: priority:6 period:26  execution_time:4 remaining_time:0 deadline:26 next_deadline:26 release_time:0 next_release_time:0
+Priority Promotion Time:8 next_Priority Promotion Time:8 Priotity_promotion:6
+Task 6 State: priority:7 period:31  execution_time:5 remaining_time:0 deadline:31 next_deadline:31 release_time:0 next_release_time:0
+Priority Promotion Time:8 next_Priority Promotion Time:8 Priotity_promotion:7
+Task 7 State: priority:8 period:32  execution_time:6 remaining_time:0 deadline:32 next_deadline:32 release_time:0 next_release_time:0
+Priority Promotion Time:3 next_Priority Promotion Time:3 Priotity_promotion:8
+Task 8 State: priority:9 period:37  execution_time:4 remaining_time:0 deadline:37 next_deadline:37 release_time:0 next_release_time:0
+Priority Promotion Time:4 next_Priority Promotion Time:4 Priotity_promotion:9
+Task 9 State: priority:10 period:41  execution_time:7 remaining_time:0 deadline:41 next_deadline:41 release_time:0 next_release_time:0
+Priority Promotion Time:1 next_Priority Promotion Time:1 Priotity_promotion:10
+Set Utilization: 1.500000 Real Utilization: 1.808857
+LCM = 2054139360
+
+Start Running G_DP Scheduling:
+
+All Task Meet Deadline!

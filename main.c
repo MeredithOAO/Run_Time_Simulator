@@ -10,19 +10,9 @@
 #include "DA_LC_Test.h"
 
 
-// Processor processor[NUMBER_PROCESSORS];
-Processor processor[NUMBER_PROCESSORS] = {
-    {.processor_id = 0, .runnin_task_id = -1, .Busy_State = false},
-    {.processor_id = 1, .runnin_task_id = -1, .Busy_State = false}
-};
+Processor processor[NUMBER_PROCESSORS];
 
-// Task Global_Tasks[NUMBER_TASK];
-Task Global_Tasks[NUMBER_TASK] = {
-    { .id = 0, .priority = 1, .period = 4,   .execution_time = 1,  .remaining_time = 0, .deadline = 3,  .next_deadline = 3,  .release_time = 0, .next_release_time = 0 },
-    { .id = 1, .priority = 2, .period = 8,   .execution_time = 5,  .remaining_time = 0, .deadline = 6,  .next_deadline = 6,  .release_time = 0, .next_release_time = 0 },
-    { .id = 2, .priority = 3, .period = 16,  .execution_time = 7,  .remaining_time = 0, .deadline = 9,  .next_deadline = 9,  .release_time = 0, .next_release_time = 0 },
-    { .id = 3, .priority = 4, .period = 32,  .execution_time = 17, .remaining_time = 0, .deadline = 31, .next_deadline = 31, .release_time = 0, .next_release_time = 0 }
-};
+Task Global_Tasks[NUMBER_TASK];
 
 int main() {
 
@@ -31,11 +21,22 @@ int main() {
     int current_time = 0;   //   Time 
     int missDeadline_flag = 0;
     int DA_LC_flag = 1;
+    
 if (Self_Test)
-{
+{   Set_Task_manually();
     Print_Task_Set();
-    print_result_of_DA();
-    print_result_of_DA_LC();
+    // print_result_of_DA();
+    // print_result_of_DA_LC();
+
+    Reset_Gloabl_Task();
+    int Simulation_time_test = Calculate_LCM(Global_Tasks,NUMBER_TASK);
+    // Set_PPP();
+    printf("\nPriority Promotion Time Set As Fllow: \n\n");
+    Print_Task_Set();
+    printf("\nStart Running G_DP Scheduling: \n\n");
+    G_DP_Scheduling(Simulation_time_test);
+
+
 }
 
     if (Generate_test_on)
@@ -43,17 +44,25 @@ if (Self_Test)
        
     //generate_task_set 
     generate_task_set(Global_Tasks);
+
+        while (Calculate_LCM(Global_Tasks,NUMBER_TASK) > 700000)
+        {
+            generate_task_set(Global_Tasks);
+        }
+        
+
     Print_Task_Set();
     DA_LC_flag = print_result_of_DA_LC();
 
-    }
-    
     if (DA_LC_flag)
     {
         printf("\nPass DA-LC Test. No need to run G-FP simulation \n");
     }else{
     
         printf("\nFail DA-LC Test. Need to run G-FP simulation \n");
+    }
+    
+
     
     if (Simulation_print)
 {
@@ -114,6 +123,13 @@ if (Self_Test)
     }else {
 
         printf("\nThese Tasks Miss Deadline. Need to try G-DP Scheduling. \n\n");
+        Reset_Gloabl_Task();
+        Set_PPP();
+        printf("\nPriority Promotion Time Set As Fllow: \n\n");
+        Print_Task_Set();
+        printf("\nStart Running G_DP Scheduling: \n\n");
+        G_DP_Scheduling(Simulation_time);
+
     }
     
     

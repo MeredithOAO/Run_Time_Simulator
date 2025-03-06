@@ -80,6 +80,11 @@ void generate_task_set(Task *tasks)
         tasks[i].release_time    = 0;
         tasks[i].next_release_time = 0;
 
+        // pp = -1
+        tasks[i].priority_promotion_time = -1;
+        tasks[i].next_priority_promotion_time = -1;
+        tasks[i].priority_promotion = i + 1;
+
     }
     
 
@@ -107,6 +112,7 @@ for (int i = 0; i < NUMBER_TASK; i++)
 {
     printf("Task %d State: priority:%d period:%d  execution_time:%d remaining_time:%d ", Global_Tasks[i].id, Global_Tasks[i].priority, Global_Tasks[i].period, Global_Tasks[i].execution_time, Global_Tasks[i].remaining_time);
     printf("deadline:%d next_deadline:%d release_time:%d next_release_time:%d \n", Global_Tasks[i].deadline, Global_Tasks[i].next_deadline, Global_Tasks[i].release_time, Global_Tasks[i].next_release_time);
+    printf("Priority Promotion Time:%d next_Priority Promotion Time:%d Priotity_promotion:%d \n", Global_Tasks[i].priority_promotion_time, Global_Tasks[i].next_priority_promotion_time, Global_Tasks[i].priority_promotion);
     Real_utilization = Real_utilization + (float)Global_Tasks[i].execution_time / Global_Tasks[i].period;
 }
 

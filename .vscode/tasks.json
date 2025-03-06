@@ -13,6 +13,7 @@
                 "DA_LC_Test.c",
                 "Simulator_1.c",
                 "Task_generate.c",
+                "G_MP.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"

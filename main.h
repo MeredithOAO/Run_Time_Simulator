@@ -9,21 +9,22 @@
 #include <math.h>
 #include <time.h>
 
-#define NUMBER_TASK 5
-#define NUMBER_PROCESSORS  4
+#define NUMBER_TASK 10
+#define NUMBER_PROCESSORS  2
 
 #define Generate_test_on 1
-#define Generate_and_run_test_on 0
+// #define Generate_and_run_test_on 0
 #define Simulation_print 1
 #define Self_Test 0
 
-#define TOTAL_UTILIZATION 3.1
+#define TOTAL_UTILIZATION 1.5
 #define MIN_PERIOD 2
 #define MAX_PERIOD 50
 
 typedef struct {
     int id;
     int priority;
+    int priority_promotion;
     int period;       
     int execution_time;         
     int remaining_time;
@@ -31,6 +32,8 @@ typedef struct {
     int next_deadline;     
     int release_time; 
     int next_release_time;
+    int priority_promotion_time;
+    int next_priority_promotion_time;
 } Task;
 
 typedef struct {
@@ -40,8 +43,10 @@ typedef struct {
 } Processor;
 
 extern Processor processor[NUMBER_PROCESSORS];
+
+
 extern Task Global_Tasks[NUMBER_TASK];
-// extern int missDeadline_flag;
+
 
 
 #endif
