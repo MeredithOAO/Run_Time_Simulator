@@ -156,7 +156,7 @@ void G_DP_Scheduling(int Simulation_time){
     {
         printf("DP_Scheduling Finished, These Task Miss Deadline");
     }else{
-        printf("All Task Meet Deadline!");
+        printf("DP_Scheduling Finished, All Task Meet Deadline!");
     }
             
     

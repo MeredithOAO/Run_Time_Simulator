@@ -7,7 +7,9 @@
 #include "main.h"
 #include "Simulator_1.h" 
 #include "Task_generate.h"
-#include "DA_LC_Test.h"
+// #include "DA_LC_Test.h"
+#include "DA_LC_OPA.h"
+#include "G_MP.h"
 
 
 Processor processor[NUMBER_PROCESSORS];
@@ -20,21 +22,27 @@ int main() {
 
     int current_time = 0;   //   Time 
     int missDeadline_flag = 0;
-    int DA_LC_flag = 1;
+    int DA_LC_OPA_flag = 1;
     
 if (Self_Test)
-{   Set_Task_manually();
+{   
+    generate_task_set(Global_Tasks);
+    while (Calculate_LCM(Global_Tasks,NUMBER_TASK) > 2000000 || Calculate_LCM(Global_Tasks,NUMBER_TASK) < 0 || Calculate_Real_U() > (float)NUMBER_PROCESSORS)
+    {
+        generate_task_set(Global_Tasks);
+    }
     Print_Task_Set();
     // print_result_of_DA();
     // print_result_of_DA_LC();
+    OPA_Assign_Priority();
 
-    Reset_Gloabl_Task();
-    int Simulation_time_test = Calculate_LCM(Global_Tasks,NUMBER_TASK);
-    // Set_PPP();
-    printf("\nPriority Promotion Time Set As Fllow: \n\n");
-    Print_Task_Set();
-    printf("\nStart Running G_DP Scheduling: \n\n");
-    G_DP_Scheduling(Simulation_time_test);
+    // Reset_Gloabl_Task();
+    // int Simulation_time_test = Calculate_LCM(Global_Tasks,NUMBER_TASK);
+    // // Set_PPP();
+    // printf("\nPriority Promotion Time Set As Fllow: \n\n");
+    // Print_Task_Set();
+    // printf("\nStart Running G_DP Scheduling: \n\n");
+    // G_DP_Scheduling(Simulation_time_test);
 
 
 }
@@ -52,14 +60,14 @@ if (Self_Test)
         
 
     Print_Task_Set();
-    DA_LC_flag = print_result_of_DA_LC();
+    DA_LC_OPA_flag = OPA_Assign_Priority();
 
-    if (DA_LC_flag)
+    if (DA_LC_OPA_flag)
     {
-        printf("\nPass DA-LC Test. No need to run G-FP simulation \n");
+        printf("\nPass DA-LC-OPA Test. No need to run G-FP simulation \n");
     }else{
     
-        printf("\nFail DA-LC Test. Need to run G-FP simulation \n");
+        printf("\nFail DA-LC_OPA Test. Need to run G-FP simulation \n");
     }
     
 
@@ -88,7 +96,7 @@ if (Self_Test)
 
         int Ready_Task_Count = Add_Task_to_RQ(Global_Tasks, Ready_Queue);
 
-        qsort(Ready_Queue, Ready_Task_Count, sizeof(Task), compare_task_priority);
+        qsort(Ready_Queue, NUMBER_TASK, sizeof(Task), compare_task_priority);
 
         // int idle_processor_count = check_processor_idle_count(processor);
     

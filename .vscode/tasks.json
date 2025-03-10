@@ -10,9 +10,10 @@
                 "/nologo",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "main.c",
-                "DA_LC_Test.c",
+                // "DA_LC_Test.c",
                 "Simulator_1.c",
                 "Task_generate.c",
+                "DA_LC_OPA.c",
                 "G_MP.c"
             ],
             "options": {

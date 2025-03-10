@@ -6,6 +6,8 @@
 
 #include "DA_LC_Test.h"
 
+Task OPA_Assign_Task_Set[NUMBER_TASK];
+
 int compare_descending(const void *a, const void *b) {
     return (*(int *)b - *(int *)a); // Reverse order
 }
