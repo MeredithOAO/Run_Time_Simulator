@@ -81,7 +81,7 @@ int check_deadline(int current_time){
 
             if (Global_Tasks[i].remaining_time > 0)
             {
-                printf("Tasks:%d miss the deadline at time %d \n", Global_Tasks[i].id, current_time);
+                // printf("Tasks:%d miss the deadline at time %d \n", Global_Tasks[i].id, current_time);
                 missDeadline_flag = 1;
             }
             Global_Tasks[i].next_deadline = current_time + Global_Tasks[i].next_release_time;

@@ -154,11 +154,19 @@ void G_DP_Scheduling(int Simulation_time){
 
     if (DP_missDeadline_flag)
     {
-        printf("DP_Scheduling Finished, These Task Miss Deadline");
+        // printf("DP_Scheduling Finished, These Task Miss Deadline");
     }else{
-        printf("DP_Scheduling Finished, All Task Meet Deadline!");
+        printf("DP_Scheduling Finished, All Task Meet Deadline!\n");
+        Reset_Gloabl_Task();
+        Print_Task_Set();
     }
             
     
 }
 
+
+void try_all_ppp(){
+
+
+
+}

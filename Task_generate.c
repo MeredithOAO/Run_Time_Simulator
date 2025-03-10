@@ -50,12 +50,13 @@ void generate_period(){
 
 void generate_task_set(Task *tasks)
 {   
-
+    int retry_times = 0;
     Unifast_allocate(TOTAL_UTILIZATION);
 
-    while (check_U())
+    while (check_U() && retry_times < 1000)
     {
         Unifast_allocate(TOTAL_UTILIZATION);
+        retry_times++;
     }
     
     generate_period();

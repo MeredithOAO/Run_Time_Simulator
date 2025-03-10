@@ -14,7 +14,9 @@
 			"da_lc_test.h": "c",
 			"task_generate.h": "c",
 			"main.h": "c",
-			"simulator_1.h": "c"
+			"simulator_1.h": "c",
+			"g_mp.h": "c",
+			"da_lc_opa.h": "c"
 		}
 	}
 }

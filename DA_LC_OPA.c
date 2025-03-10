@@ -9,11 +9,11 @@
 Task OPA_Assign_Task_Set[NUMBER_TASK];
 Task Task_set_temp[NUMBER_TASK];
 
-int compare_descending(const void *a, const void *b) {
+int compare_descending_OPA(const void *a, const void *b) {
     return (*(int *)b - *(int *)a); // Reverse order
 }
 
-int get_I_i_D_Dk_Ck(int Task_k_index, int HP_index){
+int get_I_i_D_Dk_Ck_OPA(int Task_k_index, int HP_index){
 
     int D_i = Task_set_temp[HP_index].deadline;
     int C_i = Task_set_temp[HP_index].execution_time;
@@ -31,50 +31,19 @@ int get_I_i_D_Dk_Ck(int Task_k_index, int HP_index){
     return I_i_D_Dk_Ck;
 }
 
-
-int get_total_inter_of_task_k(int Task_k_index){
+int get_total_inter_of_task_k_OPA(int Task_k_index){
 
     int total_inter_of_task_k = 0;
 
     for (int HP_index = Task_k_index - 1; HP_index >= 0; HP_index--)
     {
-        total_inter_of_task_k = total_inter_of_task_k + get_I_i_D_Dk_Ck(Task_k_index, HP_index);
+        total_inter_of_task_k = total_inter_of_task_k + get_I_i_D_Dk_Ck_OPA(Task_k_index, HP_index);
     }
     
  return total_inter_of_task_k;
 }
 
-
-int check_DA(int Task_k_index){
-
-     int total_inter_of_task_k = get_total_inter_of_task_k(Task_k_index);
-
-    // double a = (double)total_inter_of_task_k / (double)NUMBER_PROCESSORS;
-
-    if((double)Task_set_temp[Task_k_index].deadline >= floor((double)Task_set_temp[Task_k_index].execution_time + (double)total_inter_of_task_k / (double)NUMBER_PROCESSORS)){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-
-
-void print_result_of_DA(){
-    printf("Result of DA Test:  \n");
-    for (int Task_k_index = NUMBER_TASK - 1; Task_k_index >= 1; Task_k_index--)
-    {
-        if (check_DA(Task_k_index)){
-            printf("Task id %d Pass The DA Test \n",Task_k_index);
-        }else{
-            printf("Task id %d Fail The DA Test \n",Task_k_index);
-        }
-    }
-    
-
-}
-
-
-int get_I_i_NC_Dk_Ck(int Task_k_index, int HP_index){
+int get_I_i_NC_Dk_Ck_OPA(int Task_k_index, int HP_index){
 
     int D_i = Task_set_temp[HP_index].deadline;
     int C_i = Task_set_temp[HP_index].execution_time;
@@ -92,7 +61,7 @@ int get_I_i_NC_Dk_Ck(int Task_k_index, int HP_index){
     return I_i_NC_Dk_Ck;
 }
 
-int get_total_iNC_of_task_k(int Task_k_index){
+int get_total_iNC_of_task_k_OPA(int Task_k_index){
 
   
 
@@ -100,20 +69,19 @@ int get_total_iNC_of_task_k(int Task_k_index){
     
         for (int HP_index = Task_k_index - 1; HP_index >= 0; HP_index--)
         {
-            total_iNC_of_task_k = total_iNC_of_task_k + get_I_i_NC_Dk_Ck(Task_k_index, HP_index);
+            total_iNC_of_task_k = total_iNC_of_task_k + get_I_i_NC_Dk_Ck_OPA(Task_k_index, HP_index);
         }
         
      return total_iNC_of_task_k;
     
 }
 
-int get_i_Diff(int Task_k_index, int HP_index){
-    int i_Diff = get_I_i_D_Dk_Ck(Task_k_index, HP_index) - get_I_i_NC_Dk_Ck(Task_k_index, HP_index);
+int get_i_Diff_OPA(int Task_k_index, int HP_index){
+    int i_Diff = get_I_i_D_Dk_Ck_OPA(Task_k_index, HP_index) - get_I_i_NC_Dk_Ck_OPA(Task_k_index, HP_index);
     return i_Diff;
 }
 
-
-int get_total_i_Diff(int Task_k_index){
+int get_total_i_Diff_OPA(int Task_k_index){
 
     int All_i_Diff[NUMBER_TASK];
     int total_i_Diff = 0;
@@ -126,10 +94,10 @@ int get_total_i_Diff(int Task_k_index){
 
     for (int HP_index = 0; HP_index <= Task_k_index - 1 ; HP_index++)
     {
-        All_i_Diff[HP_index] = get_i_Diff(Task_k_index, HP_index);
+        All_i_Diff[HP_index] = get_i_Diff_OPA(Task_k_index, HP_index);
     }
     
-    qsort(All_i_Diff, NUMBER_TASK, sizeof(int), compare_descending);
+    qsort(All_i_Diff, NUMBER_TASK, sizeof(int), compare_descending_OPA);
 
     for (int Max_k_m = 0; Max_k_m < NUMBER_PROCESSORS - 1; Max_k_m++)
     {
@@ -140,60 +108,30 @@ int get_total_i_Diff(int Task_k_index){
 
 }
 
-int check_DA_LC(int Task_k_index){
-
-    int total_iNC_of_task_k = get_total_iNC_of_task_k(Task_k_index);
-    int total_i_Diff = get_total_i_Diff(Task_k_index);
-   // double a = (double)total_inter_of_task_k / (double)NUMBER_PROCESSORS;
-
-   if((double)Global_Tasks[Task_k_index].deadline >= floor((double)Global_Tasks[Task_k_index].execution_time + ((double)total_iNC_of_task_k + (double)total_i_Diff)/ (double)NUMBER_PROCESSORS)){
-       return 1;
-   }else{
-       return 0;
-   }
-}
-
-int print_result_of_DA_LC(){
-    int DA_LC_flag = 1;
-    printf("\nResult of DA-LC Test:(M = %d) \n", NUMBER_PROCESSORS);
-    for (int Task_k_index = NUMBER_TASK - 1; Task_k_index >= 1; Task_k_index--)
-    {
-        if (check_DA_LC(Task_k_index)){
-            printf("Task id %d Pass The DA-LC Test \n",Task_k_index);
-        }else{
-            printf("Task id %d Fail The DA-LC Test \n",Task_k_index);
-            DA_LC_flag = 0;
-        }
-    }
-    return DA_LC_flag;
-}
-
-
-
-void Print_Task_Set_OPA(Task* Task_set){
+void Print_Task_Set_OPA(){
 
     float Real_utilization = 0;
     for (int i = 0; i < NUMBER_TASK; i++)
     {
-        printf("Task %d State: priority:%d period:%d  execution_time:%d remaining_time:%d ", Task_set[i].id, Task_set[i].priority, Task_set[i].period, Task_set[i].execution_time, Task_set[i].remaining_time);
-        printf("deadline:%d next_deadline:%d release_time:%d next_release_time:%d \n", Task_set[i].deadline, Task_set[i].next_deadline, Task_set[i].release_time, Task_set[i].next_release_time);
-        printf("Priority Promotion Time:%d next_Priority Promotion Time:%d Priotity_promotion:%d \n", Task_set[i].priority_promotion_time, Task_set[i].next_priority_promotion_time, Task_set[i].priority_promotion);
-        Real_utilization = Real_utilization + (float)Task_set[i].execution_time / Task_set[i].period;
+        printf("Task %d State: priority:%d period:%d  execution_time:%d remaining_time:%d ", OPA_Assign_Task_Set[i].id, OPA_Assign_Task_Set[i].priority, OPA_Assign_Task_Set[i].period, OPA_Assign_Task_Set[i].execution_time, OPA_Assign_Task_Set[i].remaining_time);
+        printf("deadline:%d next_deadline:%d release_time:%d next_release_time:%d \n", OPA_Assign_Task_Set[i].deadline, OPA_Assign_Task_Set[i].next_deadline, OPA_Assign_Task_Set[i].release_time, OPA_Assign_Task_Set[i].next_release_time);
+        printf("Priority Promotion Time:%d next_Priority Promotion Time:%d Priotity_promotion:%d \n", OPA_Assign_Task_Set[i].priority_promotion_time, OPA_Assign_Task_Set[i].next_priority_promotion_time, OPA_Assign_Task_Set[i].priority_promotion);
+        Real_utilization = Real_utilization + (float)OPA_Assign_Task_Set[i].execution_time / OPA_Assign_Task_Set[i].period;
     }
     
     
     
     printf("Set Utilization: %f Real Utilization: %f \n",TOTAL_UTILIZATION,Real_utilization);
     
-    int Simulation_time = Calculate_LCM(Task_set,NUMBER_TASK);
+    int Simulation_time = Calculate_LCM(OPA_Assign_Task_Set,NUMBER_TASK);
     printf("LCM = %d \n",Simulation_time);
     
     }
 
 int check_DA_LC_OPA(Task* Task_Set, int priority_test){
     int Task_k_index = priority_test - 1;
-    int total_iNC_of_task_k = get_total_iNC_of_task_k(Task_k_index);
-    int total_i_Diff = get_total_i_Diff(Task_k_index);
+    int total_iNC_of_task_k = get_total_iNC_of_task_k_OPA(Task_k_index);
+    int total_i_Diff = get_total_i_Diff_OPA(Task_k_index);
    // double a = (double)total_inter_of_task_k / (double)NUMBER_PROCESSORS;
 
    if((double)Task_Set[Task_k_index].deadline >= floor((double)Task_Set[Task_k_index].execution_time + ((double)total_iNC_of_task_k + (double)total_i_Diff)/ (double)NUMBER_PROCESSORS)){
@@ -203,7 +141,7 @@ int check_DA_LC_OPA(Task* Task_Set, int priority_test){
    }
 }
 
-int OPA_Assign_Priority(){
+int OPA_Assign_Priority(int DA_LC_state){
     int priority_assign_flag = 0;
     int DA_LC_OPA_TEST_flag = 1;
 
@@ -226,16 +164,25 @@ int OPA_Assign_Priority(){
                     Task_set_temp[i] = OPA_Assign_Task_Set[i];
                 }
 
-                Task_set_temp[Test_index].priority = priority_test;
+                if (priority_test == 1)
+                {
+                    OPA_Assign_Task_Set[Test_index].priority = priority_test;
+                    priority_assign_flag = 1;
+                }else{
 
-                qsort(Task_set_temp, NUMBER_TASK, sizeof(Task), compare_task_priority);
+                    Task_set_temp[Test_index].priority = priority_test;
 
-                    if (check_DA_LC_OPA(Task_set_temp,priority_test))
-                    {
-                        OPA_Assign_Task_Set[Test_index].priority = priority_test;
-                        priority_assign_flag = 1;
-                        break;
-                    }
+                    qsort(Task_set_temp, NUMBER_TASK, sizeof(Task), compare_task_priority);
+    
+                        if (check_DA_LC_OPA(Task_set_temp,priority_test))
+                        {
+                            OPA_Assign_Task_Set[Test_index].priority = priority_test;
+                            priority_assign_flag = 1;
+                            break;
+                        }
+                }
+                
+
                     
 
             }
@@ -243,7 +190,12 @@ int OPA_Assign_Priority(){
 
         if (!priority_assign_flag)
         {
-            printf("priority:%d fail OPA\n",priority_test);
+            if (DA_LC_state)
+            {
+                 printf("priority:%d fail OPA\n",priority_test);
+            }
+            
+            
             DA_LC_OPA_TEST_flag = 0;
             break;
         }else{
@@ -254,11 +206,12 @@ int OPA_Assign_Priority(){
 
     // if (DA_LC_OPA_TEST_flag)
     // {   printf("DA-LC OPA Pass, Priority Assign:\n");
-    //     Print_Task_Set(OPA_Assign_Task_Set);
+    //     Print_Task_Set();
     // }
     
 return DA_LC_OPA_TEST_flag;
 
 }
+
 
 

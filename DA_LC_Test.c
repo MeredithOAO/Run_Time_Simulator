@@ -155,13 +155,13 @@ int check_DA_LC(int Task_k_index){
 
 int print_result_of_DA_LC(){
     int DA_LC_flag = 1;
-    printf("\nResult of DA-LC Test:(M = %d) \n", NUMBER_PROCESSORS);
+    // printf("\nResult of DA-LC Test:(M = %d) \n", NUMBER_PROCESSORS);
     for (int Task_k_index = NUMBER_TASK - 1; Task_k_index >= 1; Task_k_index--)
     {
         if (check_DA_LC(Task_k_index)){
-            printf("Task id %d Pass The DA-LC Test \n",Task_k_index);
+            // printf("Task id %d Pass The DA-LC-DM Test \n",Task_k_index);
         }else{
-            printf("Task id %d Fail The DA-LC Test \n",Task_k_index);
+            // printf("Task id %d Fail The DA-LC-DM Test \n",Task_k_index);
             DA_LC_flag = 0;
         }
     }
