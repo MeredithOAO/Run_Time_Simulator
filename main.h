@@ -19,7 +19,7 @@
 
 #define TOTAL_UTILIZATION 1.2
 #define MIN_PERIOD 2
-#define MAX_PERIOD 100
+#define MAX_PERIOD 10
 
 typedef struct {
     int id;

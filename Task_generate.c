@@ -26,7 +26,7 @@ void Unifast_allocate(double U_total){
 int check_U(){
     for (int i = 0; i < NUMBER_TASK; i++)
     {
-    if (Utilization[i] > 1.0 || Utilization[i] < 0.1)
+    if (Utilization[i] > 1.0 )//|| Utilization[i] < 0.1
     {
         return 1;
     }
@@ -70,7 +70,7 @@ void generate_task_set(Task *tasks)
 
         // 
         tasks[i].id              = i;
-        tasks[i].priority        = i + 1; 
+        tasks[i].priority        = i + 1 + NUMBER_TASK; 
         tasks[i].period          = Period[i];
         tasks[i].execution_time  = execution_time;
         tasks[i].remaining_time  = 0;
@@ -84,7 +84,7 @@ void generate_task_set(Task *tasks)
         // pp = -1
         tasks[i].priority_promotion_time = -1;
         tasks[i].next_priority_promotion_time = -1;
-        tasks[i].priority_promotion = i + 1;
+        tasks[i].priority_promotion = i + 1 + NUMBER_TASK;
 
     }
     
@@ -125,3 +125,24 @@ int Simulation_time = Calculate_LCM(Global_Tasks,NUMBER_TASK);
 printf("LCM = %d \n",Simulation_time);
 
 }
+
+
+void Print_Task_Set_general(Task* Task_need_to_print){
+
+    float Real_utilization = 0;
+    for (int i = 0; i < NUMBER_TASK; i++)
+    {
+        printf("Task %d State: priority:%d period:%d  execution_time:%d remaining_time:%d ", Task_need_to_print[i].id, Task_need_to_print[i].priority, Task_need_to_print[i].period, Task_need_to_print[i].execution_time, Task_need_to_print[i].remaining_time);
+        printf("deadline:%d next_deadline:%d release_time:%d next_release_time:%d \n", Task_need_to_print[i].deadline, Task_need_to_print[i].next_deadline, Task_need_to_print[i].release_time, Task_need_to_print[i].next_release_time);
+        printf("Priority Promotion Time:%d next_Priority Promotion Time:%d Priotity_promotion:%d \n", Task_need_to_print[i].priority_promotion_time, Task_need_to_print[i].next_priority_promotion_time, Task_need_to_print[i].priority_promotion);
+        Real_utilization = Real_utilization + (float)Task_need_to_print[i].execution_time / Task_need_to_print[i].period;
+    }
+    
+    
+    
+    printf("Set Utilization: %f Real Utilization: %f \n",TOTAL_UTILIZATION,Real_utilization);
+    
+    int Simulation_time = Calculate_LCM(Task_need_to_print,NUMBER_TASK);
+    printf("LCM = %d \n",Simulation_time);
+    
+    }

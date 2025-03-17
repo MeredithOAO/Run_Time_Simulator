@@ -1,0 +1,519 @@
+The Original Task Set Is:
+Task 0 State: priority:1 period:2  execution_time:1 remaining_time:0 deadline:2 next_deadline:2 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:1 
+Task 1 State: priority:2 period:3  execution_time:1 remaining_time:0 deadline:3 next_deadline:3 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:2 
+Task 2 State: priority:3 period:3  execution_time:3 remaining_time:0 deadline:3 next_deadline:3 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:3 
+Task 3 State: priority:4 period:5  execution_time:1 remaining_time:0 deadline:5 next_deadline:5 release_time:0 next_release_time:0 
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:4 
+Set Utilization: 1.200000 Real Utilization: 2.033333 
+LCM = 30 
+
+Simulation Start, Simulation time(LCM) = 30 M = 2 
+
+Miss Deadline. Need to try G-DP Scheduling. 
+
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 4
+DP_Scheduling Finished, All Task Meet Deadline Based on these Priority Promotion Point
+DA-LC-OPA not Pass Times = 1
+
+
+Tasks:3 miss the deadline at time 7 
+Tasks:3 miss the deadline at time 28 
+
+G-DM Simulation Miss Deadline. Need to try G-DP Scheduling. 
+
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 5 pp3 = 5
+DP_Scheduling Finished, All Task Meet Deadline Based on these Priority Promotion Point
+The Original Task Set Is:
+Task 0 State: priority:1 period:2  execution_time:1 remaining_time:0 deadline:2 next_deadline:2 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:1
+Task 1 State: priority:2 period:3  execution_time:1 remaining_time:0 deadline:3 next_deadline:3 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:2
+Task 2 State: priority:3 period:6  execution_time:3 remaining_time:0 deadline:6 next_deadline:6 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:3
+Task 3 State: priority:4 period:7  execution_time:4 remaining_time:0 deadline:7 next_deadline:7 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:4
+Set Utilization: 1.200000 Real Utilization: 1.904762
+LCM = 42
+DA-LC-OPA not Pass Times = 1
+
+
+Tasks:3 miss the deadline at time 7 
+
+G-DM Simulation Miss Deadline. Need to try G-DP Scheduling. 
+
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 1 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 1 pp3 = 6
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 2 pp3 = 6
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 3 pp3 = 6
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 4 pp3 = 6
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 5 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 5 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 5 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 0 pp2 = 5 pp3 = 6
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 5 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 5 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 5 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 1 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 5 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 5 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 5 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 2 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 1 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 4 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 5 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 5 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 5 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 3 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 6
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 5 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 5 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 5 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 5 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 5 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 5 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 0 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 1 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 5 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 5 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 5 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 2 pp2 = 5 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 0 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 1 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 2 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 2 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 2 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 3 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 3 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 3 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 3 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 3 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 3 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 4 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 4 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 4 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 4 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 4 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 4 pp3 = 5
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 5 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 5 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 5 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 5 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 5 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 3 pp2 = 5 pp3 = 5
+DP_Scheduling Finished, All Task Meet Deadline Based on these Priority Promotion Point
+The Original Task Set Is:
+Task 0 State: priority:1 period:2  execution_time:1 remaining_time:0 deadline:2 next_deadline:2 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:1
+Task 1 State: priority:2 period:4  execution_time:1 remaining_time:0 deadline:4 next_deadline:4 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:2
+Task 2 State: priority:3 period:6  execution_time:1 remaining_time:0 deadline:6 next_deadline:6 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:3
+Task 3 State: priority:4 period:7  execution_time:5 remaining_time:0 deadline:7 next_deadline:7 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:4
+Set Utilization: 1.200000 Real Utilization: 1.630952
+LCM = 84
+DA-LC-OPA not Pass Times = 1
+
+
+Tasks:2 miss the deadline at time 3 
+
+G-DM Simulation Miss Deadline. Need to try G-DP Scheduling. 
+
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 0 pp1 = 1 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 0 pp2 = 2 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 0 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 0
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 1
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 1 pp3 = 4
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 2
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 3
+The possible schedulable priority_promotion_time Setting can be : pp0 = 1 pp1 = 1 pp2 = 2 pp3 = 4
+DP_Scheduling Finished, All Task Meet Deadline Based on these Priority Promotion Point
+The Original Task Set Is:
+Task 0 State: priority:1 period:2  execution_time:1 remaining_time:0 deadline:2 next_deadline:2 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:1
+Task 1 State: priority:2 period:2  execution_time:1 remaining_time:0 deadline:2 next_deadline:2 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:2
+Task 2 State: priority:3 period:3  execution_time:2 remaining_time:0 deadline:3 next_deadline:3 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:3
+Task 3 State: priority:4 period:5  execution_time:1 remaining_time:0 deadline:5 next_deadline:5 release_time:0 next_release_time:0
+Priority Promotion Time:-1 next_Priority Promotion Time:-1 Priotity_promotion:4
+Set Utilization: 1.200000 Real Utilization: 1.866667
+LCM = 30
+DA-LC-OPA not Pass Times = 1

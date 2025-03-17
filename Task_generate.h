@@ -18,5 +18,5 @@ int Period[NUMBER_TASK];
  void Print_Task_Set();
  void generate_period();
  int check_U();
- 
+ void Print_Task_Set_general(Task* Task_need_to_print);
 
