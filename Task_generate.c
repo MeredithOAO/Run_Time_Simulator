@@ -3,7 +3,6 @@
 #include <math.h>
 #include <time.h>
 
-
 #include "Task_generate.h"
 
 int compare_increasing(const void *a, const void *b) {

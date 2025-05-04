@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "g_mp.h": "c",
+        "stdbool.h": "c",
+        "time.h": "c",
+        "stdio.h": "c"
+    }
+}
