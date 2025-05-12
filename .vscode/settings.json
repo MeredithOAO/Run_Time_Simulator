@@ -3,6 +3,8 @@
         "g_mp.h": "c",
         "stdbool.h": "c",
         "time.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "math.h": "c"
     }
 }

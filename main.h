@@ -9,17 +9,17 @@
 #include <math.h>
 #include <time.h>
 
-#define NUMBER_TASK 4
-#define NUMBER_PROCESSORS  3
+#define NUMBER_TASK 10
+#define NUMBER_PROCESSORS  4
 
 #define Generate_test_on 0
 // #define Generate_and_run_test_on 0
 #define Simulation_print 0
 #define Self_Test 1
 
-#define TOTAL_UTILIZATION 2.4
-#define MIN_PERIOD 2
-#define MAX_PERIOD 30
+#define TOTAL_UTILIZATION 2.2
+#define MIN_PERIOD 500
+#define MAX_PERIOD 10000
 
 typedef struct {
     int id;

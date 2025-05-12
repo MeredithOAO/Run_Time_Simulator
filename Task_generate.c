@@ -25,7 +25,7 @@ void Unifast_allocate(double U_total){
 int check_U(){
     for (int i = 0; i < NUMBER_TASK; i++)
     {
-    if (Utilization[i] > 1.0 )//|| Utilization[i] < 0.1
+    if (Utilization[i] >= 0.9 )//|| Utilization[i] < 0.1
     {
         return 1;
     }
@@ -63,6 +63,8 @@ void generate_task_set(Task *tasks)
     for (int i = 0; i < NUMBER_TASK; i++)
     {
         int execution_time = (int)ceil(Utilization[i] * Period[i]);
+        
+
         if (execution_time < 1) {
         execution_time = 1;  // c >= 1
         }
