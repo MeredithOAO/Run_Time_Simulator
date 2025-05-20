@@ -36,7 +36,48 @@ for (int i = 0; i < NUMBER_TASK; i++)
 
 }
 
+
 }
+
+
+void Set_PPP_Utilization_based(){
+
+for (int i = 0; i < NUMBER_TASK; i++)
+{
+    int ALL_C_j = 0;
+    for (int j = 0; j < i; j++)
+    {
+        ALL_C_j = ALL_C_j + Global_Tasks[j].execution_time;
+    }
+
+    double U_i = (double)Global_Tasks[i].execution_time / (double)Global_Tasks[i].period;
+    int D_C = Global_Tasks[i].deadline - Global_Tasks[i].execution_time;
+    // int prority_set = floor((1.0 - U_i/TOTAL_UTILIZATION) * (double)D_C);
+    int prority_set = floor((1.0 - U_i) * (double)D_C);
+
+    // int prority_set = max(Global_Tasks[i].deadline - Global_Tasks[i].execution_time - floor((double)ALL_C_j / (double)NUMBER_PROCESSORS), 0);
+
+
+
+    // Global_Tasks[i].priority_promotion_time = max(Global_Tasks[i].deadline - Global_Tasks[i].execution_time - ALL_C_j, 0);
+    // Global_Tasks[i].next_priority_promotion_time = Global_Tasks[i].priority_promotion_time;
+
+    Global_Tasks[i].priority_promotion_time = prority_set;
+    Global_Tasks[i].next_priority_promotion_time = Global_Tasks[i].priority_promotion_time;
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
 
 int compare_task_priority_DP(const void* a, const void* b) {
     Task* ta = (Task*)a;

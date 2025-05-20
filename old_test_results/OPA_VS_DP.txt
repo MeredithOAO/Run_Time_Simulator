@@ -1,0 +1,76 @@
+
+===== TOTAL_UTILIZATION = 0.2 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 0.4 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 0.6 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 0.8 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.0 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.2 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.4 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.6 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.8 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.0 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.2 =====
+DA_LC_OPA = 100000  not pass DA_LC_OPA = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.4 =====
+DA_LC_OPA = 99966  not pass DA_LC_OPA = 34 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.6 =====
+DA_LC_OPA = 99316  not pass DA_LC_OPA = 684 but pass RTA_DP = 5 
+
+
+===== TOTAL_UTILIZATION = 2.8 =====
+DA_LC_OPA = 96538  not pass DA_LC_OPA = 3462 but pass RTA_DP = 12 
+
+
+===== TOTAL_UTILIZATION = 3.0 =====
+DA_LC_OPA = 89219  not pass DA_LC_OPA = 10781 but pass RTA_DP = 40 
+
+
+===== TOTAL_UTILIZATION = 3.2 =====
+DA_LC_OPA = 75128  not pass DA_LC_OPA = 24872 but pass RTA_DP = 106 
+
+
+===== TOTAL_UTILIZATION = 3.4 =====
+DA_LC_OPA = 54532  not pass DA_LC_OPA = 45468 but pass RTA_DP = 181 
+
+
+===== TOTAL_UTILIZATION = 3.6 =====
+DA_LC_OPA = 32493  not pass DA_LC_OPA = 67507 but pass RTA_DP = 203 
+
+
+===== TOTAL_UTILIZATION = 3.8 =====
+DA_LC_OPA = 14368  not pass DA_LC_OPA = 85632 but pass RTA_DP = 111 
+

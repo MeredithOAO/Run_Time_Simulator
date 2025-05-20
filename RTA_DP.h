@@ -17,3 +17,11 @@ int check_RTA_DP(int Task_k_index);
 int I_R_K_calculation_with_W(int R_K_pre, int Task_i_index, int Task_k_index);
 int I_R_K_calculation_without_w(int R_K_pre, int Task_i_index, int Task_k_index);
 int I_R_K_calculation_only_W(int R_K_pre, int Task_i_index, int Task_k_index);
+
+
+
+int I_R_K_calculation_for_FP(int R_K_pre, int Task_i_index, int Task_k_index);
+int total_I_FP_calculation(int R_pre, int Task_k_index);
+
+int check_RTA_FP(int Task_k_index);
+int RTA_FP_result();

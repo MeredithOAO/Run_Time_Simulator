@@ -1,0 +1,76 @@
+
+===== TOTAL_UTILIZATION = 0.2 =====
+RTA_FP = 1000  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 0.4 =====
+RTA_FP = 1000  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 0.6 =====
+RTA_FP = 1000  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 0.8 =====
+RTA_FP = 1000  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.0 =====
+RTA_FP = 1000  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.2 =====
+RTA_FP = 1000  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.4 =====
+RTA_FP = 998  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.6 =====
+RTA_FP = 993  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.8 =====
+RTA_FP = 980  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.0 =====
+RTA_FP = 947  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.2 =====
+RTA_FP = 920  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.4 =====
+RTA_FP = 867  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.6 =====
+RTA_FP = 779  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.8 =====
+RTA_FP = 640  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 3.0 =====
+RTA_FP = 537  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 3.2 =====
+RTA_FP = 366  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 3.4 =====
+RTA_FP = 225  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 3.6 =====
+RTA_FP = 123  not pass RTA_FP but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 3.8 =====
+RTA_FP = 55  not pass RTA_FP but pass RTA_DP = 0 
+

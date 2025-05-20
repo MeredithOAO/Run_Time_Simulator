@@ -15,6 +15,7 @@
                 "Task_generate.c",
                 "DA_LC_OPA.c",
                 "RTA_DP.c",
+                "RTA_DP_OPA.c",
                 "G_MP.c"
             ],
             "options": {

@@ -85,7 +85,7 @@ void generate_task_set(Task *tasks)
         // pp = -1
         tasks[i].priority_promotion_time = -1;
         tasks[i].next_priority_promotion_time = -1;
-        tasks[i].priority_promotion = i + 1 + NUMBER_TASK;
+        tasks[i].priority_promotion = i + 1;
 
     }
     

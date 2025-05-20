@@ -5,6 +5,7 @@
         "time.h": "c",
         "stdio.h": "c",
         "stdlib.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "rta_dp.h": "c"
     }
 }

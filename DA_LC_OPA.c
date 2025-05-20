@@ -149,7 +149,7 @@ int OPA_Assign_Priority(int DA_LC_state){
     {
         OPA_Assign_Task_Set[i] = Global_Tasks[i];
         OPA_Assign_Task_Set[i].priority = 0;
-    }// copy task set and set priority to -1
+    }// copy task set and set priority to -1  
 
     
     for (int priority_test = NUMBER_TASK; priority_test >= 1; priority_test--)
@@ -213,5 +213,112 @@ return DA_LC_OPA_TEST_flag;
 
 }
 
+
+
+
+
+
+
+
+
+
+int OPA_Combined_DP(int DP_Check){
+    int priority_assign_flag = 0;
+    int OPA_Combined_DP_TEST_flag = 1;
+
+    for (int i = 0; i < NUMBER_TASK; i++)
+    {
+        OPA_Assign_Task_Set[i] = Global_Tasks[i];
+        OPA_Assign_Task_Set[i].priority = 0;
+    }// copy task set and set priority to -1
+
+    
+    for (int priority_test = NUMBER_TASK; priority_test >= 1; priority_test--)
+    {
+
+        for (int Test_index = 0; Test_index < NUMBER_TASK; Test_index++)
+        {
+            if (OPA_Assign_Task_Set[Test_index].priority == 0)
+            {
+                for (int i = 0; i < NUMBER_TASK; i++)
+                {
+                    Task_set_temp[i] = OPA_Assign_Task_Set[i];
+                }
+
+                if (priority_test == 1)
+                {
+                    OPA_Assign_Task_Set[Test_index].priority = priority_test + 1 + NUMBER_TASK;
+                    priority_assign_flag = 1;
+                }else{
+
+                    Task_set_temp[Test_index].priority = priority_test + 1 + NUMBER_TASK;
+
+                    qsort(Task_set_temp, NUMBER_TASK, sizeof(Task), compare_task_priority);
+    
+                        if (check_DA_LC_OPA(Task_set_temp,priority_test))
+                        {
+                            OPA_Assign_Task_Set[Test_index].priority = priority_test + 1 + NUMBER_TASK;
+                            priority_assign_flag = 1;
+                            break;
+                        }else{
+                            Task_set_temp[Test_index].priority = 0;
+                        }
+                }
+                
+
+                    
+
+            }
+        }
+
+        if (!priority_assign_flag)
+        {
+            if (DP_Check)
+            {
+                 
+                
+                Task *Task_remain_need_to_check_dp = (Task *)calloc(priority_test, sizeof(Task));
+                for (int need_to_check_DP_index = 0; need_to_check_DP_index < priority_test ; need_to_check_DP_index++)
+                {
+                    Task_remain_need_to_check_dp[need_to_check_DP_index] = Task_set_temp[need_to_check_DP_index];
+                }
+
+
+                if (check_RTA_DP_OPA(Task_remain_need_to_check_dp, priority_test))
+                {
+                    OPA_Combined_DP_TEST_flag = 0;
+                }else{OPA_Combined_DP_TEST_flag = 0;}
+                
+
+                
+
+                // if (priority_test != 10)
+                // {   printf("priority:%d fail OPA\n",priority_test);
+                //     Print_Task_Set_general(Task_remain_need_to_check_dp);
+                // }
+                // printf("priority:%d fail OPA\n",priority_test);
+                //     Print_Task_Set_general(Task_remain_need_to_check_dp);
+                
+                
+
+            }
+            
+            
+            
+            break;
+        }else{
+            priority_assign_flag = 0;
+        }
+        
+    }
+
+    // if (DA_LC_OPA_TEST_flag)
+    // {   printf("DA-LC OPA Pass, Priority Assign:\n");
+    //     Print_Task_Set();
+    // }
+    
+return OPA_Combined_DP_TEST_flag;
+
+}
 
 

@@ -11,6 +11,7 @@
 #include "DA_LC_OPA.h"
 #include "G_MP.h"
 #include "RTA_DP.h"
+#include "RTA_DP_OPA.h"
 
 
 Processor processor[NUMBER_PROCESSORS];
@@ -26,6 +27,8 @@ int main() {
     int DA_LC_flag = 1;
     int DA_LC_OPA_flag = 1;
     int RTA_DP_flag = 1;
+    int RTA_FP_flag = 1;
+    int RTA_DP_OPA_FLAG = 1;
     
 if (Self_Test)
 {   
@@ -33,7 +36,8 @@ if (Self_Test)
     int temp_count = 0;
     int meet_condition_1_times = 0;
     int meet_condition_2_times = 0;
-while (temp_count < 10000)
+    int test_times_count = 10000;
+while (temp_count < test_times_count)
 {
     generate_task_set(Global_Tasks);
     while (Calculate_LCM(Global_Tasks,NUMBER_TASK) < 0 || Calculate_Real_U() > (float)NUMBER_PROCESSORS) //Calculate_LCM(Global_Tasks,NUMBER_TASK) > 2000000 ||
@@ -43,38 +47,29 @@ while (temp_count < 10000)
 
 
 // Set_PPP();
-// Print_Task_Set();
+// Set_PPP_Utilization_based();
+    // DA_LC_flag = print_result_of_DA_LC();
+    DA_LC_OPA_flag = OPA_Assign_Priority(0);
+    RTA_DP_OPA_FLAG = OPA_Combined_DP(1);
 
-RTA_DP_flag = RTA_DP_Result();
 
-
-DA_LC_flag = print_result_of_DA_LC();
-
-// printf("RTA_DP = %d  DA_LC = %d \n",RTA_DP_flag,DA_LC_flag);
-
-if (RTA_DP_flag)
+if (DA_LC_OPA_flag)
 {
     meet_condition_1_times++;
-// Print_Task_Set();
-// G_DP_Scheduling(Calculate_LCM(Global_Tasks,NUMBER_TASK));
 }
 
-if (DA_LC_flag)
+
+if (RTA_DP_OPA_FLAG)
 {
     meet_condition_2_times++;
 }
 
-
-// if (RTA_DP_flag && !DA_LC_flag)
-// {
-// Print_Task_Set();
-// G_DP_Scheduling(Calculate_LCM(Global_Tasks,NUMBER_TASK));
-// }
-
 temp_count++;
 }
 
-printf("RTA_DP = %d  DA_LC = %d \n",meet_condition_1_times,meet_condition_2_times);
+printf("DA_LC_OPA = %d RTA_DP_OPA = %d \n",meet_condition_1_times , meet_condition_2_times);
+
+// printf("DA_LC_OPA = %d  not pass DA_LC_OPA = %d but pass RTA_DP = %d \n",meet_condition_1_times, test_times_count - meet_condition_1_times, meet_condition_2_times);
 
     
 

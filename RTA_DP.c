@@ -198,7 +198,7 @@ for (int Task_i_index = 0; Task_i_index < NUMBER_TASK; Task_i_index++)
         I_R_K = I_R_K + I_R_K_calculation_with_W(R_pre, Task_i_index, Task_k_index);
     }else{
         if(Task_i_index != Task_k_index){
-        I_R_K = I_R_K + I_R_K_calculation_without_M(R_pre, Task_i_index, Task_k_index);
+        I_R_K = I_R_K + I_R_K_calculation_with_W(R_pre, Task_i_index, Task_k_index);
         }
     }
 
@@ -249,7 +249,7 @@ if (R_k < Global_Tasks[Task_k_index].deadline)
 
 int RTA_DP_Result(){
     int RTA_DP_flag = 1;
-    for (int Task_k_index = 0; Task_k_index < NUMBER_TASK; Task_k_index++)
+    for (int Task_k_index = 1; Task_k_index < NUMBER_TASK; Task_k_index++)
     {
         if (check_RTA_DP(Task_k_index)){
             // printf("Task id %d Pass The RTA_DP Test \n",Task_k_index);
@@ -259,4 +259,89 @@ int RTA_DP_Result(){
         }
     }
     return RTA_DP_flag;
+}
+
+
+
+
+
+int I_R_K_calculation_for_FP(int R_K_pre, int Task_i_index, int Task_k_index){
+    int I_R_K;
+
+    // int W_i_Dk = max(W_i_Dk_calculation(Task_i_index, Task_k_index),0);
+    int M_R_k = M_R_k_calculation(Task_i_index, R_K_pre);
+    int Supper_UB = Supper_UB_calculation(Task_k_index, R_K_pre);
+
+    I_R_K = min(M_R_k,Supper_UB);
+
+    return I_R_K;
+}
+
+
+int total_I_FP_calculation(int R_pre, int Task_k_index){
+
+        int I_R_K = 0;
+for (int Task_i_index = 0; Task_i_index < NUMBER_TASK; Task_i_index++)
+{
+
+    if (Task_i_index < Task_k_index)
+    {
+        I_R_K = I_R_K + I_R_K_calculation_for_FP(R_pre, Task_i_index, Task_k_index);
+    }
+
+
+    
+}
+
+return I_R_K;
+
+}
+
+
+
+
+int check_RTA_FP(int Task_k_index){
+    int R_initial = Global_Tasks[Task_k_index].execution_time;
+    int R_k = R_initial + floor((double)total_I_FP_calculation(R_initial, Task_k_index)/(double)NUMBER_PROCESSORS);
+
+    int R_pre = R_initial;
+    int Test_result;
+    int tmep_count = 0;
+while (R_k != R_pre && tmep_count < 1000)
+{
+    R_pre = R_k;
+    int interf_temp = floor((double)total_I_FP_calculation(R_pre, Task_k_index)/(double)NUMBER_PROCESSORS);
+    R_k = R_initial + interf_temp;
+    // printf("Iteration %d : Rk is %d  \n",tmep_count,R_k);
+    tmep_count++;
+}
+
+
+
+
+if (R_k < Global_Tasks[Task_k_index].deadline)
+{
+    Test_result = 1;
+}else{
+    Test_result = 0;
+}
+
+    return Test_result;
+}
+
+
+int RTA_FP_result(){
+
+        int RTA_FP_flag = 1;
+    for (int Task_k_index = 1; Task_k_index < NUMBER_TASK; Task_k_index++)
+    {
+        if (check_RTA_FP(Task_k_index)){
+            // printf("Task id %d Pass The RTA_DP Test \n",Task_k_index);
+        }else{
+            // printf("Task id %d fail The RTA_DP Test \n",Task_k_index);
+            RTA_FP_flag = 0;
+        }
+    }
+    return RTA_FP_flag;
+
 }

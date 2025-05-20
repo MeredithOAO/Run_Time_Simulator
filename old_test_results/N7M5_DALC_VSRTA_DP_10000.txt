@@ -1,0 +1,76 @@
+
+===== TOTAL_UTILIZATION = 0.2 =====
+DA_LC = 10000  not pass DA_LC = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 0.4 =====
+DA_LC = 10000  not pass DA_LC = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 0.6 =====
+DA_LC = 10000  not pass DA_LC = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 0.8 =====
+DA_LC = 10000  not pass DA_LC = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.0 =====
+DA_LC = 10000  not pass DA_LC = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.2 =====
+DA_LC = 10000  not pass DA_LC = 0 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.4 =====
+DA_LC = 9989  not pass DA_LC = 11 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.6 =====
+DA_LC = 9945  not pass DA_LC = 55 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 1.8 =====
+DA_LC = 9819  not pass DA_LC = 181 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.0 =====
+DA_LC = 9569  not pass DA_LC = 431 but pass RTA_DP = 0 
+
+
+===== TOTAL_UTILIZATION = 2.2 =====
+DA_LC = 9210  not pass DA_LC = 790 but pass RTA_DP = 2 
+
+
+===== TOTAL_UTILIZATION = 2.4 =====
+DA_LC = 8671  not pass DA_LC = 1329 but pass RTA_DP = 1 
+
+
+===== TOTAL_UTILIZATION = 2.6 =====
+DA_LC = 7727  not pass DA_LC = 2273 but pass RTA_DP = 5 
+
+
+===== TOTAL_UTILIZATION = 2.8 =====
+DA_LC = 6750  not pass DA_LC = 3250 but pass RTA_DP = 8 
+
+
+===== TOTAL_UTILIZATION = 3.0 =====
+DA_LC = 5386  not pass DA_LC = 4614 but pass RTA_DP = 10 
+
+
+===== TOTAL_UTILIZATION = 3.2 =====
+DA_LC = 3899  not pass DA_LC = 6101 but pass RTA_DP = 18 
+
+
+===== TOTAL_UTILIZATION = 3.4 =====
+DA_LC = 2456  not pass DA_LC = 7544 but pass RTA_DP = 23 
+
+
+===== TOTAL_UTILIZATION = 3.6 =====
+DA_LC = 1267  not pass DA_LC = 8733 but pass RTA_DP = 38 
+
+
+===== TOTAL_UTILIZATION = 3.8 =====
+DA_LC = 481  not pass DA_LC = 9519 but pass RTA_DP = 18 
+

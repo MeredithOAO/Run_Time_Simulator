@@ -21,3 +21,7 @@ void G_DP_Scheduling(int Simulation_time);
 int G_DP_Scheduling_Test(int Simulation_time);
 void Reset_DP_Temp();
 void try_all_ppp(int Simulation_time);
+
+
+
+void Set_PPP_Utilization_based();

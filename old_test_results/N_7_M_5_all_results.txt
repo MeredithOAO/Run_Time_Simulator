@@ -1,0 +1,76 @@
+
+===== TOTAL_UTILIZATION = 0.2 =====
+RTA_DP = 1000  RTA_FP = 1000 
+
+
+===== TOTAL_UTILIZATION = 0.4 =====
+RTA_DP = 1000  RTA_FP = 1000 
+
+
+===== TOTAL_UTILIZATION = 0.6 =====
+RTA_DP = 1000  RTA_FP = 1000 
+
+
+===== TOTAL_UTILIZATION = 0.8 =====
+RTA_DP = 1000  RTA_FP = 1000 
+
+
+===== TOTAL_UTILIZATION = 1.0 =====
+RTA_DP = 1000  RTA_FP = 1000 
+
+
+===== TOTAL_UTILIZATION = 1.2 =====
+RTA_DP = 1000  RTA_FP = 1000 
+
+
+===== TOTAL_UTILIZATION = 1.4 =====
+RTA_DP = 1000  RTA_FP = 1000 
+
+
+===== TOTAL_UTILIZATION = 1.6 =====
+RTA_DP = 991  RTA_FP = 991 
+
+
+===== TOTAL_UTILIZATION = 1.8 =====
+RTA_DP = 986  RTA_FP = 986 
+
+
+===== TOTAL_UTILIZATION = 2.0 =====
+RTA_DP = 952  RTA_FP = 952 
+
+
+===== TOTAL_UTILIZATION = 2.2 =====
+RTA_DP = 913  RTA_FP = 914 
+
+
+===== TOTAL_UTILIZATION = 2.4 =====
+RTA_DP = 845  RTA_FP = 845 
+
+
+===== TOTAL_UTILIZATION = 2.6 =====
+RTA_DP = 765  RTA_FP = 765 
+
+
+===== TOTAL_UTILIZATION = 2.8 =====
+RTA_DP = 651  RTA_FP = 651 
+
+
+===== TOTAL_UTILIZATION = 3.0 =====
+RTA_DP = 506  RTA_FP = 506 
+
+
+===== TOTAL_UTILIZATION = 3.2 =====
+RTA_DP = 407  RTA_FP = 407 
+
+
+===== TOTAL_UTILIZATION = 3.4 =====
+RTA_DP = 212  RTA_FP = 212 
+
+
+===== TOTAL_UTILIZATION = 3.6 =====
+RTA_DP = 117  RTA_FP = 117 
+
+
+===== TOTAL_UTILIZATION = 3.8 =====
+RTA_DP = 56  RTA_FP = 56 
+
