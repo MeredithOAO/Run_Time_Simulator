@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "RTA_DP.h"
+#include "RTA_DP_OPA.h"
 
 
 // sort task set no need
 
 // rta calculation
-Task Task_dup_RTA_DP_OPA [NUMBER_TASK];
+// Task Task_dup_RTA_DP_OPA [NUMBER_TASK];
 
 
 int compare_task_priority_RTA_DP_OPA(const void* a, const void* b) {
@@ -219,16 +219,39 @@ if (R_k < Task_Set_need_to_test[Task_k_index].deadline)
 
 
 
+int RTA_DP_OPA_Result(Task* Task_Set_need_to_test, int Number_of_remain_Task){
+    int RTA_DP_flag = 1;
+    for (int Task_k_index = 1; Task_k_index < Number_of_remain_Task; Task_k_index++)
+    {
+        if (check_RTA_DP_OPA_for_one_task_k(Task_Set_need_to_test, Task_k_index, Number_of_remain_Task)){
+            // printf("Task id %d Pass The RTA_DP Test \n",Task_k_index);
+        }else{
+            // printf("Task id %d fail The RTA_DP Test \n",Task_k_index);
+            RTA_DP_flag = 0;
+        }
+    }
+    return RTA_DP_flag;
+}
+
+
+
 
 int check_RTA_DP_OPA(Task* Task_Set_remain, int Number_of_remain_Task){
 
-// for (int i = 0; i < Number_of_remain_Task; i++)
-// {
-//     printf(" id = %d  period = %d  priority = %d  ppp = %d\n",Task_Set_remain[i].id, Task_Set_remain[i].period, Task_Set_remain[i].priority, Task_Set_remain[i].priority_promotion_time);
-// }
+for (int i = 0; i < Number_of_remain_Task; i++)
+{
+    Task_Set_remain[i].priority = 0;
+}
 // Print_Task_Set();
 
-Task *Task_set_temp = (Task *)calloc(Number_of_remain_Task, sizeof(Task));
+Task *Task_set_temp_opa = (Task *)calloc(Number_of_remain_Task, sizeof(Task));
+Task *Task_set_need_to_try = (Task *)calloc(Number_of_remain_Task, sizeof(Task));
+
+for (int i = 0; i < Number_of_remain_Task; i++)
+{
+    Task_set_need_to_try[i] = Task_Set_remain[i];
+}
+
 
     int priority_assign_flag = 0;
     int RTA_DP_OPA_TEST_flag = 1;
@@ -240,34 +263,39 @@ Task *Task_set_temp = (Task *)calloc(Number_of_remain_Task, sizeof(Task));
 for (int priority_test = Number_of_remain_Task; priority_test >= 1; priority_test--)
 {
     
+    // 
+    // for (int Test_index = Number_of_remain_Task - 1; Test_index >= 0; Test_index--)
     for (int Test_index = 0; Test_index < Number_of_remain_Task; Test_index++)
     {
-        if (Task_Set_remain[Test_index].priority == 0){
+        if (Task_set_need_to_try[Test_index].priority == 0){
 
             for (int i = 0; i < Number_of_remain_Task; i++)
                 {
-                    Task_set_temp[i] = Task_Set_remain[i];
+                    Task_set_temp_opa[i] = Task_set_need_to_try[i];
                 }
 
 
             if (priority_test == 1)
             {
-                Task_Set_remain[Test_index].priority = priority_test + NUMBER_TASK;
-                Task_Set_remain[Test_index].priority_promotion = priority_test;
+                Task_set_need_to_try[Test_index].priority = priority_test + NUMBER_TASK;
+                Task_set_need_to_try[Test_index].priority_promotion = priority_test;
                 priority_assign_flag = 1;
             }else{
 
-                Task_set_temp[Test_index].priority = priority_test + NUMBER_TASK;
-                qsort(Task_set_temp, Number_of_remain_Task, sizeof(Task), compare_task_priority_RTA_DP_OPA);
+                Task_set_temp_opa[Test_index].priority = priority_test + NUMBER_TASK;
+                qsort(Task_set_temp_opa, Number_of_remain_Task, sizeof(Task), compare_task_priority_RTA_DP_OPA);
 
-
-                if (check_RTA_DP_OPA_for_one_task_k(Task_set_temp, priority_test, Number_of_remain_Task))
+                // Print_Task_Set_general(Task_set_temp_opa);
+                if (check_RTA_DP_OPA_for_one_task_k(Task_set_temp_opa, priority_test - 1, Number_of_remain_Task))
                 {
-                            Task_Set_remain[Test_index].priority = priority_test + NUMBER_TASK;
-                            Task_Set_remain[Test_index].priority_promotion = priority_test;
+                            Task_set_need_to_try[Test_index].priority = priority_test + NUMBER_TASK;
+                            Task_set_need_to_try[Test_index].priority_promotion = priority_test;
                             priority_assign_flag = 1;
+                            // Print_Task_Set_general(Task_set_need_to_try);
                             break;
-                }
+                }else{
+                            Task_set_temp_opa[Test_index].priority = 0;
+                        }
                 
 
             }
@@ -280,14 +308,21 @@ for (int priority_test = Number_of_remain_Task; priority_test >= 1; priority_tes
 
 
     if (!priority_assign_flag){
-
     RTA_DP_OPA_TEST_flag = 0;
     break;
-    
     }else{
             priority_assign_flag = 0;
         }
 }
+
+// if (!RTA_DP_OPA_TEST_flag)
+// {
+//     Print_Task_Set_general(Task_Set_remain);
+//     printf("%d\n",Number_of_remain_Task);
+// }
+
+
+// Print_Task_Set_general(Task_set_need_to_try);
 
 return RTA_DP_OPA_TEST_flag;
 }

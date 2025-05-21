@@ -1,5 +1,5 @@
 #include "main.h"
-// #include "Simulator_1.h"
+#include "Task_generate.h"
 
 int compare_task_priority_RTA_DP_OPA(const void* a, const void* b);
 
@@ -27,4 +27,7 @@ int total_IRK_calculation_OPA(int R_pre, int Task_k_index, int Number_of_remain_
 int check_RTA_DP_OPA_for_one_task_k(Task* Task_Set_need_to_test, int Task_k_index, int Number_of_remain_Task);
 
 int check_RTA_DP_OPA(Task* Task_Set_remain, int Number_of_remain_Task);
+
+
+int RTA_DP_OPA_Result(Task* Task_Set_need_to_test, int Number_of_remain_Task);
 

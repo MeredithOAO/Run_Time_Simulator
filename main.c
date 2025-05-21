@@ -24,11 +24,11 @@ int main() {
 
     int current_time = 0;   //   Time 
     int missDeadline_flag = 0;
-    int DA_LC_flag = 1;
-    int DA_LC_OPA_flag = 1;
-    int RTA_DP_flag = 1;
-    int RTA_FP_flag = 1;
-    int RTA_DP_OPA_FLAG = 1;
+    int DA_LC_flag = 0;
+    int DA_LC_OPA_flag = 0;
+    int RTA_DP_flag = 0;
+    int RTA_FP_flag = 0;
+    int RTA_DP_OPA_FLAG = 0;
     
 if (Self_Test)
 {   
@@ -47,16 +47,33 @@ while (temp_count < test_times_count)
 
 
 // Set_PPP();
-// Set_PPP_Utilization_based();
-    // DA_LC_flag = print_result_of_DA_LC();
+    Set_PPP_Utilization_based();
     DA_LC_OPA_flag = OPA_Assign_Priority(0);
-    RTA_DP_OPA_FLAG = OPA_Combined_DP(1);
 
-
-if (DA_LC_OPA_flag)
+    // RTA_DP_flag = RTA_DP_Result();
+    
+    if (DA_LC_OPA_flag)
 {
     meet_condition_1_times++;
 }
+    // DA_LC_flag = print_result_of_DA_LC();
+    
+    RTA_DP_OPA_FLAG = OPA_Combined_DP(1);
+
+    // if (!DA_LC_OPA_flag)
+    // {
+    //     RTA_DP_flag = OPA_Combined_DP(Global_Tasks);
+
+    //     if (RTA_DP_flag)
+    //     {
+    //         meet_condition_2_times++;
+    //     }
+        
+    // }
+    
+
+
+
 
 
 if (RTA_DP_OPA_FLAG)
@@ -67,7 +84,7 @@ if (RTA_DP_OPA_FLAG)
 temp_count++;
 }
 
-printf("DA_LC_OPA = %d RTA_DP_OPA = %d \n",meet_condition_1_times , meet_condition_2_times);
+printf("DA_LC_OPA = %d DA_LC_COMBINED_RTA_DP_OPA = %d \n",meet_condition_1_times , meet_condition_2_times);
 
 // printf("DA_LC_OPA = %d  not pass DA_LC_OPA = %d but pass RTA_DP = %d \n",meet_condition_1_times, test_times_count - meet_condition_1_times, meet_condition_2_times);
 

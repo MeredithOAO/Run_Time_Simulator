@@ -174,7 +174,7 @@ int OPA_Assign_Priority(int DA_LC_state){
 
                     qsort(Task_set_temp, NUMBER_TASK, sizeof(Task), compare_task_priority);
     
-                        if (check_DA_LC_OPA(Task_set_temp,priority_test))
+                        if (check_DA_LC_OPA(Task_set_temp,priority_test))// if (1)
                         {
                             OPA_Assign_Task_Set[Test_index].priority = priority_test;
                             priority_assign_flag = 1;
@@ -282,11 +282,14 @@ int OPA_Combined_DP(int DP_Check){
                 {
                     Task_remain_need_to_check_dp[need_to_check_DP_index] = Task_set_temp[need_to_check_DP_index];
                 }
+                
+                qsort(Task_remain_need_to_check_dp, priority_test, sizeof(Task), compare_task_priority);
 
+                // Print_Task_Set_general(Task_remain_need_to_check_dp);
 
-                if (check_RTA_DP_OPA(Task_remain_need_to_check_dp, priority_test))
+                if (check_RTA_DP_OPA(Task_remain_need_to_check_dp, priority_test))  //if (RTA_DP_OPA_Result(Task_remain_need_to_check_dp, priority_test))
                 {
-                    OPA_Combined_DP_TEST_flag = 0;
+                    OPA_Combined_DP_TEST_flag = 1;
                 }else{OPA_Combined_DP_TEST_flag = 0;}
                 
 
