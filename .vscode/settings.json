@@ -6,6 +6,8 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "math.h": "c",
-        "rta_dp.h": "c"
+        "rta_dp.h": "c",
+        "rta_dp_opa.h": "c",
+        "improved_rta_dp.h": "c"
     }
 }

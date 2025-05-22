@@ -16,6 +16,7 @@
                 "DA_LC_OPA.c",
                 "RTA_DP.c",
                 "RTA_DP_OPA.c",
+                "Improved_RTA_DP.c",
                 "G_MP.c"
             ],
             "options": {

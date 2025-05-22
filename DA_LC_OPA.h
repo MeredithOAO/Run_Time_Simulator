@@ -2,6 +2,7 @@
 #include "Simulator_1.h"
 #include "Task_generate.h"
 #include "RTA_DP_OPA.h"
+#include "Improved_RTA_DP.h"
 
 int compare_descending_OPA(const void *a, const void *b);
 
@@ -25,3 +26,4 @@ int OPA_Assign_Priority(int DA_LC_state);
 int OPA_Combined_DP(int DP_Check);
 
 int check_DA_LC_OPA_combined_DP(Task* Task_Set, int priority_test);
+int OPA_Combined_Improved_DP(int DP_Check);

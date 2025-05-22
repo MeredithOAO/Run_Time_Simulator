@@ -9,15 +9,15 @@
 #include <math.h>
 #include <time.h>
 
-#define NUMBER_TASK 10
-#define NUMBER_PROCESSORS  2
+#define NUMBER_TASK 12
+#define NUMBER_PROCESSORS  8
 
 #define Generate_test_on 0
 // #define Generate_and_run_test_on 0
 #define Simulation_print 0
 #define Self_Test 1
 
-#define TOTAL_UTILIZATION 2.0
+#define TOTAL_UTILIZATION 6.8
 #define MIN_PERIOD 20
 #define MAX_PERIOD 1000
 

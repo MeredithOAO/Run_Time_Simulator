@@ -29,6 +29,7 @@ int main() {
     int RTA_DP_flag = 0;
     int RTA_FP_flag = 0;
     int RTA_DP_OPA_FLAG = 0;
+    int Improved_RTA_DP_OPA_FLAG = 0;
     
 if (Self_Test)
 {   
@@ -36,29 +37,62 @@ if (Self_Test)
     int temp_count = 0;
     int meet_condition_1_times = 0;
     int meet_condition_2_times = 0;
+    int meet_condition_3_times = 0;
     int test_times_count = 10000;
 while (temp_count < test_times_count)
 {
     generate_task_set(Global_Tasks);
-    while (Calculate_LCM(Global_Tasks,NUMBER_TASK) < 0 || Calculate_Real_U() > (float)NUMBER_PROCESSORS) //Calculate_LCM(Global_Tasks,NUMBER_TASK) > 2000000 ||
+    while ( Calculate_Real_U() > (float)NUMBER_PROCESSORS) //Calculate_LCM(Global_Tasks,NUMBER_TASK) > 2000000 || Calculate_LCM(Global_Tasks,NUMBER_TASK) < 0 ||
 {
     generate_task_set(Global_Tasks);
 }
-
-
+Set_PPP_Utilization_based();
+// Print_Task_Set();
 // Set_PPP();
-    Set_PPP_Utilization_based();
+    
     DA_LC_OPA_flag = OPA_Assign_Priority(0);
 
-    // RTA_DP_flag = RTA_DP_Result();
+        if (DA_LC_OPA_flag)
+        {
+            meet_condition_1_times++;
+        }
+
+
+        if (!DA_LC_OPA_flag)
+        {
+            RTA_DP_flag = check_RTA_DP_OPA(Global_Tasks,NUMBER_TASK);
+            if (RTA_DP_flag)
+            {
+                meet_condition_2_times++;
+            }
+            
+            Improved_RTA_DP_OPA_FLAG = RTA_DP_OPA_Result(Global_Tasks,NUMBER_TASK);
+                if (Improved_RTA_DP_OPA_FLAG)
+                    {
+                        meet_condition_3_times++;
+                    }
+
+        }
+
+
+
+    // RTA_DP_flag = check_RTA_DP_OPA(Global_Tasks,NUMBER_TASK);
+    // RTA_DP_flag = OPA_Combined_DP(1);
+    //     if (RTA_DP_flag)
+    //     {
+    //         meet_condition_2_times++;
+    //     }
+
+    // // DA_LC_flag = print_result_of_DA_LC();
     
-    if (DA_LC_OPA_flag)
-{
-    meet_condition_1_times++;
-}
-    // DA_LC_flag = print_result_of_DA_LC();
+    // Improved_RTA_DP_OPA_FLAG = Improved_check_RTA_DP_OPA(Global_Tasks,NUMBER_TASK);
+    // // Improved_RTA_DP_OPA_FLAG = RTA_DP_OPA_Result(Global_Tasks,NUMBER_TASK);
+    // Improved_RTA_DP_OPA_FLAG = OPA_Combined_Improved_DP(1);
+    // if (Improved_RTA_DP_OPA_FLAG)
+    // {
+    //     meet_condition_3_times++;
+    // }
     
-    RTA_DP_OPA_FLAG = OPA_Combined_DP(1);
 
     // if (!DA_LC_OPA_flag)
     // {
@@ -76,15 +110,12 @@ while (temp_count < test_times_count)
 
 
 
-if (RTA_DP_OPA_FLAG)
-{
-    meet_condition_2_times++;
-}
+
 
 temp_count++;
 }
 
-printf("DA_LC_OPA = %d DA_LC_COMBINED_RTA_DP_OPA = %d \n",meet_condition_1_times , meet_condition_2_times);
+printf("DA_LC_OPA = %d RTA_DP_flag = %d Improved_RTA_DP_FLAG = %d\n",meet_condition_1_times , meet_condition_2_times, meet_condition_3_times);
 
 // printf("DA_LC_OPA = %d  not pass DA_LC_OPA = %d but pass RTA_DP = %d \n",meet_condition_1_times, test_times_count - meet_condition_1_times, meet_condition_2_times);
 
