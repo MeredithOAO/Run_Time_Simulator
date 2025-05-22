@@ -58,12 +58,17 @@ int Improved_W_r_p_calculation_OPA(int Task_i_index, int Task_k_index, Task* Tas
     int N_i_low = floor(((double)P_k + (double)D_i - (double)C_i) / (double)T_i);
     int E_p = max(P_k + D_i - C_i - N_i_low * T_i,0);
 
+
+    int C_i_new_for_i_bigger_k = min(C_i,D_i - P_i);
+    int N_i_low_new_for_i_bigger_k = floor(((double)P_k + (double)D_i - (double)C_i_new_for_i_bigger_k) / (double)T_i);
+    int E_p_new_for_i_bigger_k = max(P_k + D_i - C_i_new_for_i_bigger_k - N_i_low_new_for_i_bigger_k * T_i,0);
+
 if (Task_i_index < Task_k_index)
 {
     W_r_p = N_i_low * C_i + min(E_p,C_i);
 
 }else{
-    W_r_p = N_i_low * C_i + min(max(E_p - P_i,0),C_i);
+    W_r_p = N_i_low_new_for_i_bigger_k * C_i_new_for_i_bigger_k + min(max(E_p_new_for_i_bigger_k - P_i,0),C_i_new_for_i_bigger_k);
 }
 
 return W_r_p;
@@ -104,7 +109,11 @@ int Improved_W_p_d_calculation_OPA(int Task_i_index, int Task_k_index, Task* Tas
 
 int Improved_W_i_Dk_calculation_OPA(int Task_i_index, int Task_k_index, Task* Task_Set_need_to_test){
 
-   return Improved_W_r_p_calculation_OPA(Task_i_index, Task_k_index, Task_Set_need_to_test) + Improved_W_p_d_calculation_OPA(Task_i_index, Task_k_index, Task_Set_need_to_test);
+    int low_window = Improved_W_r_p_calculation_OPA(Task_i_index, Task_k_index, Task_Set_need_to_test);
+    int high_window = Improved_W_p_d_calculation_OPA(Task_i_index, Task_k_index, Task_Set_need_to_test);
+    // printf("low_window is %d  high_window is %d \n",low_window,high_window);
+
+   return  low_window + high_window;
     
 }
 
@@ -296,3 +305,175 @@ for (int priority_test = Number_of_remain_Task; priority_test >= 1; priority_tes
 
 return RTA_DP_OPA_TEST_flag;
 }
+
+
+
+
+int Improved_W_i_Dk_calculation_for_DP_Try(int Task_i_index, int Task_k_index, Task* Task_Set_need_to_test){
+    int I_R_K;
+
+    int W_i_Dk = max(Improved_W_i_Dk_calculation_OPA(Task_i_index, Task_k_index, Task_Set_need_to_test),0);
+
+
+    return W_i_Dk;
+}
+
+
+
+int Improved_DP_try_I_R_K_calculation_OPA(int Task_k_index, int Number_of_remain_Task, Task* Task_Set_need_to_test){
+
+    int I_R_K = 0;
+    int I_R_K_bound = Task_Set_need_to_test[Task_k_index].deadline - Task_Set_need_to_test[Task_k_index].execution_time + 1;
+
+for (int Task_i_index = 0; Task_i_index < Number_of_remain_Task; Task_i_index++)
+{
+    if (Task_i_index < Task_k_index)
+    {
+        I_R_K = I_R_K + min(Improved_W_i_Dk_calculation_for_DP_Try( Task_i_index, Task_k_index, Task_Set_need_to_test),I_R_K_bound);
+        // printf("Task k is task %d Task i is task %d IRK = %d\n",Task_Set_need_to_test[Task_k_index].id, Task_Set_need_to_test[Task_i_index].id,I_R_K);
+    }else{
+        if(Task_i_index != Task_k_index){
+        I_R_K = I_R_K + min(Improved_W_i_Dk_calculation_for_DP_Try( Task_i_index, Task_k_index, Task_Set_need_to_test),I_R_K_bound);
+        // printf("Task k is task %d Task i is task %d IRK = %d\n",Task_Set_need_to_test[Task_k_index].id, Task_Set_need_to_test[Task_i_index].id,I_R_K);
+        }
+    }
+
+
+    
+}
+
+return I_R_K;
+}
+
+
+
+int Improved_check_DP_try_OPA_for_one_task_k(Task* Task_Set_need_to_test, int Task_k_index, int Number_of_remain_Task) {
+
+    
+    int Test_result = 0;
+
+    int DP_try_result_value = Task_Set_need_to_test[Task_k_index].execution_time + floor((double)Improved_DP_try_I_R_K_calculation_OPA(Task_k_index, Number_of_remain_Task, Task_Set_need_to_test)/(double)NUMBER_PROCESSORS);
+    // printf("Now test the Task_k_id = %d  DP_try_result_value = %d  deadline is %d\n",Task_k_index,DP_try_result_value,Task_Set_need_to_test[Task_k_index].deadline);
+if (DP_try_result_value <= Task_Set_need_to_test[Task_k_index].deadline)
+{
+    Test_result = 1;
+}else{
+    Test_result = 0;
+}
+    // printf("result is %d\n",Test_result);
+    return Test_result;
+}
+
+
+int Improved_check_DP_try(Task* Task_Set_need_to_test, int Number_of_remain_Task){
+int result = 1;
+for (int Task_k_index = 0; Task_k_index < NUMBER_TASK; Task_k_index++)
+{
+    if (!Improved_check_DP_try_OPA_for_one_task_k(Task_Set_need_to_test, Task_k_index, Number_of_remain_Task))
+    {
+        result = 0;
+    }
+    
+    
+}
+
+return result;
+
+}
+
+
+
+int Improved_check_DP_try_OPA(Task* Task_Set_remain, int Number_of_remain_Task){
+
+for (int i = 0; i < Number_of_remain_Task; i++)
+{
+    Task_Set_remain[i].priority = 0;
+}
+// Print_Task_Set();
+
+Task *Task_set_temp_opa = (Task *)calloc(Number_of_remain_Task, sizeof(Task));
+Task *Task_set_need_to_try = (Task *)calloc(Number_of_remain_Task, sizeof(Task));
+
+for (int i = 0; i < Number_of_remain_Task; i++)
+{
+    Task_set_need_to_try[i] = Task_Set_remain[i];
+}
+
+
+    int priority_assign_flag = 0;
+    int RTA_DP_OPA_TEST_flag = 1;
+
+
+// qsort(Task_Set_remain, priority_test, sizeof(Task), compare_task_priority_RTA_DP_OPA);
+
+
+for (int priority_test = Number_of_remain_Task; priority_test >= 1; priority_test--)
+{
+    
+    // 
+    // for (int Test_index = Number_of_remain_Task - 1; Test_index >= 0; Test_index--)
+    for (int Test_index = 0; Test_index < Number_of_remain_Task; Test_index++)
+    {
+        if (Task_set_need_to_try[Test_index].priority == 0){
+
+            for (int i = 0; i < Number_of_remain_Task; i++)
+                {
+                    Task_set_temp_opa[i] = Task_set_need_to_try[i];
+                }
+
+
+            if (priority_test == 1)
+            {
+                Task_set_need_to_try[Test_index].priority = priority_test + NUMBER_TASK;
+                Task_set_need_to_try[Test_index].priority_promotion = priority_test;
+                priority_assign_flag = 1;
+            }else{
+
+                Task_set_temp_opa[Test_index].priority = priority_test + NUMBER_TASK;
+                qsort(Task_set_temp_opa, Number_of_remain_Task, sizeof(Task), Improved_compare_task_priority_RTA_DP_OPA);
+
+                // Print_Task_Set_general(Task_set_temp_opa);
+                if (Improved_check_DP_try_OPA_for_one_task_k(Task_set_temp_opa, priority_test-1 , Number_of_remain_Task))
+                {
+                            Task_set_need_to_try[Test_index].priority = priority_test + NUMBER_TASK;
+                            Task_set_need_to_try[Test_index].priority_promotion = priority_test;
+                            priority_assign_flag = 1;
+                            // Print_Task_Set_general(Task_set_need_to_try);
+                            // printf("Task id %d is assigned to priority %d\n",Task_set_need_to_try[Test_index].id,priority_test);
+                            break;
+                }else{
+                            Task_set_temp_opa[Test_index].priority = 0;
+                            // printf("Task id %d try to assign to priority %d failed\n",Task_set_need_to_try[Test_index].id,priority_test);
+                        }
+                
+
+            }
+            
+
+        }
+    }
+    
+
+
+
+    if (!priority_assign_flag){
+    RTA_DP_OPA_TEST_flag = 0;
+    break;
+    }else{
+            priority_assign_flag = 0;
+        }
+}
+
+// if (!RTA_DP_OPA_TEST_flag)
+// {
+//     Print_Task_Set_general(Task_Set_remain);
+//     printf("%d\n",Number_of_remain_Task);
+// }
+
+
+// Print_Task_Set_general(Task_set_need_to_try);
+
+return RTA_DP_OPA_TEST_flag;
+}
+
+

@@ -99,7 +99,8 @@ int get_total_i_Diff_OPA(int Task_k_index){
     
     qsort(All_i_Diff, NUMBER_TASK, sizeof(int), compare_descending_OPA);
 
-    for (int Max_k_m = 0; Max_k_m < NUMBER_PROCESSORS - 1; Max_k_m++)
+    // for (int Max_k_m = 0; Max_k_m < NUMBER_PROCESSORS - 1; Max_k_m++)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    for (int Max_k_m = 0; Max_k_m < NUMBER_TASK; Max_k_m++)
     {
         total_i_Diff = total_i_Diff + All_i_Diff[Max_k_m];
     }
@@ -133,8 +134,10 @@ int check_DA_LC_OPA(Task* Task_Set, int priority_test){
     int total_iNC_of_task_k = get_total_iNC_of_task_k_OPA(Task_k_index);
     int total_i_Diff = get_total_i_Diff_OPA(Task_k_index);
    // double a = (double)total_inter_of_task_k / (double)NUMBER_PROCESSORS;
-
-   if((double)Task_Set[Task_k_index].deadline >= floor((double)Task_Set[Task_k_index].execution_time + ((double)total_iNC_of_task_k + (double)total_i_Diff)/ (double)NUMBER_PROCESSORS)){
+    int DA_OPA_value = floor((double)Task_Set[Task_k_index].execution_time + ((double)total_iNC_of_task_k + (double)total_i_Diff)/ (double)NUMBER_PROCESSORS);
+    // printf("Task_k_index is %d DA_OPA_value is %d\n",Task_k_index, DA_OPA_value);
+   
+    if(Task_Set[Task_k_index].deadline >= DA_OPA_value){
        return 1;
    }else{
        return 0;
@@ -178,7 +181,10 @@ int OPA_Assign_Priority(int DA_LC_state){
                         {
                             OPA_Assign_Task_Set[Test_index].priority = priority_test;
                             priority_assign_flag = 1;
+                            // printf("Task id %d is assigned to priority %d\n",OPA_Assign_Task_Set[Test_index].id,priority_test);
                             break;
+                        }else{
+                            // printf("Task id %d is failed to assign to priority %d\n",OPA_Assign_Task_Set[Test_index].id,priority_test);
                         }
                 }
                 
@@ -208,7 +214,7 @@ int OPA_Assign_Priority(int DA_LC_state){
     // {   printf("DA-LC OPA Pass, Priority Assign:\n");
     //     Print_Task_Set();
     // }
-    
+    // Print_Task_Set_general(OPA_Assign_Task_Set);
 return DA_LC_OPA_TEST_flag;
 
 }

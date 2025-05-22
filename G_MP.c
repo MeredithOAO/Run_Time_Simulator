@@ -10,13 +10,13 @@ Task DP_Temp[NUMBER_TASK];
 
 void Set_Task_manually(){
 
-    Global_Tasks[0] = (Task){ .id = 0, .priority = 1, .period = 4,  .priority_promotion = 1, .execution_time = 1,  .remaining_time = 0, .deadline = 3,  .next_deadline = 3,  .release_time = 0, .next_release_time = 0, .priority_promotion_time = 0, .next_priority_promotion_time = 0 };
+    Global_Tasks[0] = (Task){ .id = 0, .priority = 2, .period = 185,  .priority_promotion = 1, .execution_time = 89,  .remaining_time = 0, .deadline = 185,  .next_deadline = 185,  .release_time = 0, .next_release_time = 0, .priority_promotion_time = 0, .next_priority_promotion_time = 0 };
     
-    Global_Tasks[1] = (Task){ .id = 1, .priority = 2, .period = 8,  .priority_promotion = 2, .execution_time = 5,  .remaining_time = 0, .deadline = 6,  .next_deadline = 6,  .release_time = 0, .next_release_time = 0, .priority_promotion_time = 3, .next_priority_promotion_time = 3 };
+    Global_Tasks[1] = (Task){ .id = 1, .priority = 1, .period = 463,  .priority_promotion = 2, .execution_time = 372,  .remaining_time = 0, .deadline = 463,  .next_deadline = 463,  .release_time = 0, .next_release_time = 0, .priority_promotion_time = 3, .next_priority_promotion_time = 3 };
     
-    Global_Tasks[2] = (Task){ .id = 2, .priority = 3, .period = 16, .priority_promotion = 3, .execution_time = 7,  .remaining_time = 0, .deadline = 9,  .next_deadline = 9,  .release_time = 0, .next_release_time = 0, .priority_promotion_time = 6, .next_priority_promotion_time = 6 };
+    Global_Tasks[2] = (Task){ .id = 2, .priority = 3, .period = 819, .priority_promotion = 3, .execution_time = 180,  .remaining_time = 0, .deadline = 819,  .next_deadline = 819,  .release_time = 0, .next_release_time = 0, .priority_promotion_time = 6, .next_priority_promotion_time = 6 };
     
-    Global_Tasks[3] = (Task){ .id = 3, .priority = 4, .period = 32, .priority_promotion = 4, .execution_time = 17, .remaining_time = 0, .deadline = 31, .next_deadline = 31, .release_time = 0, .next_release_time = 0, .priority_promotion_time = 27, .next_priority_promotion_time = 27 };
+    // Global_Tasks[3] = (Task){ .id = 3, .priority = 4, .period = 32, .priority_promotion = 4, .execution_time = 17, .remaining_time = 0, .deadline = 31, .next_deadline = 31, .release_time = 0, .next_release_time = 0, .priority_promotion_time = 27, .next_priority_promotion_time = 27 };
     
 }
 
@@ -55,8 +55,8 @@ for (int i = 0; i < NUMBER_TASK; i++)
     // int prority_set = floor((1.0 - U_i/TOTAL_UTILIZATION) * (double)D_C);
     // int prority_set = floor((1.0 - U_i) * (double)D_C);
     double U_i_minus1 = 1.0 - U_i;
-    int prority_set = floor(pow(U_i_minus1, 6) * (double)Global_Tasks[i].deadline);
-
+    // int prority_set = floor(pow(U_i_minus1, 6) * (double)Global_Tasks[i].deadline);
+    int prority_set = Global_Tasks[i].deadline;
     // int prority_set = max(Global_Tasks[i].deadline - Global_Tasks[i].execution_time - floor((double)ALL_C_j / (double)NUMBER_PROCESSORS), 0);
 
 
