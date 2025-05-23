@@ -38,7 +38,7 @@ if (Self_Test)
     int meet_condition_1_times = 0;
     int meet_condition_2_times = 0;
     int meet_condition_3_times = 0;
-    int test_times_count = 200;
+    int test_times_count = 2000;
 while (temp_count < test_times_count)
 {
     generate_task_set(Global_Tasks);
@@ -53,88 +53,26 @@ while (temp_count < test_times_count)
 // Print_Task_Set();
 // Set_PPP();
     // printf("start DA_OPA \n");
-    DA_LC_OPA_flag = OPA_Assign_Priority(0);// now is not limited carry in
 
-        if (DA_LC_OPA_flag)
-        {
-            meet_condition_1_times++;
-        }
-    // printf("start DP_OPA \n");
-        Improved_RTA_DP_OPA_FLAG = Improved_check_DP_try_OPA(Global_Tasks,NUMBER_TASK);
-    // Improved_RTA_DP_OPA_FLAG = Improved_check_DP_try(Global_Tasks,NUMBER_TASK);
-    
+        // DA_LC_OPA_flag = OPA_Assign_Priority(0);// now is not limited carry in
+        // if (DA_LC_OPA_flag)
+        // {
+        //     meet_condition_1_times++;
+        // }
+
+        Improved_RTA_DP_OPA_FLAG = OPA_Combined_Improved_DP(1);
         if (Improved_RTA_DP_OPA_FLAG)
         {
             meet_condition_3_times++;
         }
 
-        if (DA_LC_OPA_flag && !Improved_RTA_DP_OPA_FLAG)
-        {
-            Print_Task_Set();
-            // printf("This is the failed task set This is the failed task set This is the failed task set This is the failed task set\n");
-        }
-        
-
-        // if (!DA_LC_OPA_flag)
-        // {
-        //     RTA_DP_flag = check_RTA_DP_OPA(Global_Tasks,NUMBER_TASK);
-        //     if (RTA_DP_flag)
-        //     {
-        //         meet_condition_2_times++;
-        //     }
-            
-        //     Improved_RTA_DP_OPA_FLAG = Improved_check_RTA_DP_OPA(Global_Tasks,NUMBER_TASK);
-        //         if (Improved_RTA_DP_OPA_FLAG)
-        //             {
-        //                 meet_condition_3_times++;
-        //             }
-
-        // }
-
-
-
-    // RTA_DP_flag = check_RTA_DP_OPA(Global_Tasks,NUMBER_TASK);
-    // RTA_DP_flag = OPA_Combined_DP(1);
-    //     if (RTA_DP_flag)
-    //     {
-    //         meet_condition_2_times++;
-    //     }
-
-    // // DA_LC_flag = print_result_of_DA_LC();
-    
-    // Improved_RTA_DP_OPA_FLAG = Improved_check_RTA_DP_OPA(Global_Tasks,NUMBER_TASK);
-    // // Improved_RTA_DP_OPA_FLAG = RTA_DP_OPA_Result(Global_Tasks,NUMBER_TASK);
-    // Improved_RTA_DP_OPA_FLAG = OPA_Combined_Improved_DP(1);
-    // if (Improved_RTA_DP_OPA_FLAG)
-    // {
-    //     meet_condition_3_times++;
-    // }
-    
-
-    // if (!DA_LC_OPA_flag)
-    // {
-    //     RTA_DP_flag = OPA_Combined_DP(Global_Tasks);
-
-    //     if (RTA_DP_flag)
-    //     {
-    //         meet_condition_2_times++;
-    //     }
-        
-    // }
-    
-
-
-
-
-
-
-
 temp_count++;
 }
+// printf("DA_LC_OPA = %d \n",meet_condition_1_times);
+printf("Improved_RTA_DP_FLAG = %d\n",meet_condition_3_times);
+// printf("DA_LC_OPA = %d Improved_RTA_DP_FLAG = %d\n",meet_condition_1_times, meet_condition_3_times);
 
-printf("DA_LC_OPA = %d Improved_RTA_DP_FLAG = %d\n",meet_condition_1_times, meet_condition_3_times);
-
-// printf("DA_LC_OPA = %d  not pass DA_LC_OPA = %d but pass RTA_DP = %d \n",meet_condition_1_times, test_times_count - meet_condition_1_times, meet_condition_2_times);
+// printf("DA_OPA = %d  not pass DA_LC_OPA = %d but pass DP_OPA = %d \n",meet_condition_1_times, test_times_count - meet_condition_1_times, meet_condition_3_times);
 
     
 

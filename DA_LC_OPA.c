@@ -395,7 +395,7 @@ int OPA_Combined_Improved_DP(int DP_Check){
 
                 // Print_Task_Set_general(Task_remain_need_to_check_dp);
 
-                if (Improved_check_RTA_DP_OPA(Task_remain_need_to_check_dp, priority_test))  //if (RTA_DP_OPA_Result(Task_remain_need_to_check_dp, priority_test))
+                if (Improved_check_DP_try_OPA(Task_remain_need_to_check_dp, priority_test))  //if Task* Task_Set_need_to_test, int Task_k_index, int Number_of_remain_Task
                 {
                     OPA_Combined_DP_TEST_flag = 1;
                 }else{OPA_Combined_DP_TEST_flag = 0;}

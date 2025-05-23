@@ -1,0 +1,368 @@
+
+===== PPPprefix = 0.10 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 534
+
+
+===== PPPprefix = 0.11 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 577
+
+
+===== PPPprefix = 0.12 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 514
+
+
+===== PPPprefix = 0.13 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 511
+
+
+===== PPPprefix = 0.14 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 551
+
+
+===== PPPprefix = 0.15 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 543
+
+
+===== PPPprefix = 0.16 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 576
+
+
+===== PPPprefix = 0.17 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 566
+
+
+===== PPPprefix = 0.18 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 588
+
+
+===== PPPprefix = 0.19 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 568
+
+
+===== PPPprefix = 0.20 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 570
+
+
+===== PPPprefix = 0.21 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 539
+
+
+===== PPPprefix = 0.22 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 576
+
+
+===== PPPprefix = 0.23 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 578
+
+
+===== PPPprefix = 0.24 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 547
+
+
+===== PPPprefix = 0.25 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 569
+
+
+===== PPPprefix = 0.26 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 579
+
+
+===== PPPprefix = 0.27 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 547
+
+
+===== PPPprefix = 0.28 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 559
+
+
+===== PPPprefix = 0.29 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 569
+
+
+===== PPPprefix = 0.30 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 617
+
+
+===== PPPprefix = 0.31 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 602
+
+
+===== PPPprefix = 0.32 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 606
+
+
+===== PPPprefix = 0.33 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 626
+
+
+===== PPPprefix = 0.34 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 615
+
+
+===== PPPprefix = 0.35 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 592
+
+
+===== PPPprefix = 0.36 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 605
+
+
+===== PPPprefix = 0.37 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 632
+
+
+===== PPPprefix = 0.38 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 625
+
+
+===== PPPprefix = 0.39 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 629
+
+
+===== PPPprefix = 0.40 =====
+DA_LC_OPA = 1999 Improved_RTA_DP_FLAG = 646
+
+
+===== PPPprefix = 0.41 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 642
+
+
+===== PPPprefix = 0.42 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 644
+
+
+===== PPPprefix = 0.43 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 615
+
+
+===== PPPprefix = 0.44 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 665
+
+
+===== PPPprefix = 0.45 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 659
+
+
+===== PPPprefix = 0.46 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 671
+
+
+===== PPPprefix = 0.47 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 682
+
+
+===== PPPprefix = 0.48 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 664
+
+
+===== PPPprefix = 0.49 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 648
+
+
+===== PPPprefix = 0.50 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 692
+
+
+===== PPPprefix = 0.51 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 693
+
+
+===== PPPprefix = 0.52 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 664
+
+
+===== PPPprefix = 0.53 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 688
+
+
+===== PPPprefix = 0.54 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 674
+
+
+===== PPPprefix = 0.55 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 695
+
+
+===== PPPprefix = 0.56 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 713
+
+
+===== PPPprefix = 0.57 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 711
+
+
+===== PPPprefix = 0.58 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 692
+
+
+===== PPPprefix = 0.59 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 690
+
+
+===== PPPprefix = 0.60 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 690
+
+
+===== PPPprefix = 0.61 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 710
+
+
+===== PPPprefix = 0.62 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 711
+
+
+===== PPPprefix = 0.63 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 704
+
+
+===== PPPprefix = 0.64 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 700
+
+
+===== PPPprefix = 0.65 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 690
+
+
+===== PPPprefix = 0.66 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 664
+
+
+===== PPPprefix = 0.67 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 703
+
+
+===== PPPprefix = 0.68 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 711
+
+
+===== PPPprefix = 0.69 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 689
+
+
+===== PPPprefix = 0.70 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 687
+
+
+===== PPPprefix = 0.71 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 688
+
+
+===== PPPprefix = 0.72 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 687
+
+
+===== PPPprefix = 0.73 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 659
+
+
+===== PPPprefix = 0.74 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 725
+
+
+===== PPPprefix = 0.75 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 700
+
+
+===== PPPprefix = 0.76 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 748
+
+
+===== PPPprefix = 0.77 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 754
+
+
+===== PPPprefix = 0.78 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 745
+
+
+===== PPPprefix = 0.79 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 791
+
+
+===== PPPprefix = 0.80 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 831
+
+
+===== PPPprefix = 0.81 =====
+DA_LC_OPA = 1999 Improved_RTA_DP_FLAG = 873
+
+
+===== PPPprefix = 0.82 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 896
+
+
+===== PPPprefix = 0.83 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 874
+
+
+===== PPPprefix = 0.84 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 985
+
+
+===== PPPprefix = 0.85 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 997
+
+
+===== PPPprefix = 0.86 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1080
+
+
+===== PPPprefix = 0.87 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1165
+
+
+===== PPPprefix = 0.88 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1227
+
+
+===== PPPprefix = 0.89 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1271
+
+
+===== PPPprefix = 0.89 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1280
+
+
+===== PPPprefix = 0.90 =====
+DA_LC_OPA = 1999 Improved_RTA_DP_FLAG = 1339
+
+
+===== PPPprefix = 0.91 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1456
+
+
+===== PPPprefix = 0.92 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1525
+
+
+===== PPPprefix = 0.93 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1636
+
+
+===== PPPprefix = 0.94 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1715
+
+
+===== PPPprefix = 0.95 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1792
+
+
+===== PPPprefix = 0.96 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1884
+
+
+===== PPPprefix = 0.97 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1935
+
+
+===== PPPprefix = 0.98 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 1993
+
+
+===== PPPprefix = 0.99 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 2000
+
+
+===== PPPprefix = 1.00 =====
+DA_LC_OPA = 2000 Improved_RTA_DP_FLAG = 2000
+

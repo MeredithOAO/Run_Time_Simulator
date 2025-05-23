@@ -1,124 +1,156 @@
 
 ===== TOTAL_UTILIZATION = 0.2 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 0.4 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 0.6 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 0.8 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 1.0 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 1.2 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 1.4 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 1.6 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 1.8 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 2.0 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 2.2 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 2.4 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 2.6 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 2.8 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 3.0 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 3.2 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 3.4 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 3.6 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 2000
 
 
 ===== TOTAL_UTILIZATION = 3.8 =====
-DA_LC_OPA = 10000 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 1999
 
 
 ===== TOTAL_UTILIZATION = 4.0 =====
-DA_LC_OPA = 9993 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 1986
 
 
 ===== TOTAL_UTILIZATION = 4.2 =====
-DA_LC_OPA = 9979 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 1942
 
 
 ===== TOTAL_UTILIZATION = 4.4 =====
-DA_LC_OPA = 9864 RTA_DP_flag = 1 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 1774
 
 
 ===== TOTAL_UTILIZATION = 4.6 =====
-DA_LC_OPA = 9561 RTA_DP_flag = 0 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 1434
 
 
 ===== TOTAL_UTILIZATION = 4.8 =====
-DA_LC_OPA = 8948 RTA_DP_flag = 3 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 1066
 
 
 ===== TOTAL_UTILIZATION = 5.0 =====
-DA_LC_OPA = 7812 RTA_DP_flag = 8 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 620
 
 
 ===== TOTAL_UTILIZATION = 5.2 =====
-DA_LC_OPA = 6387 RTA_DP_flag = 11 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 331
 
 
 ===== TOTAL_UTILIZATION = 5.4 =====
-DA_LC_OPA = 4593 RTA_DP_flag = 15 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 99
 
 
 ===== TOTAL_UTILIZATION = 5.6 =====
-DA_LC_OPA = 2710 RTA_DP_flag = 8 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 36
 
 
 ===== TOTAL_UTILIZATION = 5.8 =====
-DA_LC_OPA = 1406 RTA_DP_flag = 16 Improved_RTA_DP_FLAG = 1
+Improved_RTA_DP_FLAG = 9
 
 
 ===== TOTAL_UTILIZATION = 6.0 =====
-DA_LC_OPA = 586 RTA_DP_flag = 2 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 1
 
 
 ===== TOTAL_UTILIZATION = 6.2 =====
-DA_LC_OPA = 157 RTA_DP_flag = 3 Improved_RTA_DP_FLAG = 0
+Improved_RTA_DP_FLAG = 0
+
+
+===== TOTAL_UTILIZATION = 6.4 =====
+Improved_RTA_DP_FLAG = 0
+
+
+===== TOTAL_UTILIZATION = 6.6 =====
+Improved_RTA_DP_FLAG = 0
+
+
+===== TOTAL_UTILIZATION = 6.8 =====
+Improved_RTA_DP_FLAG = 0
+
+
+===== TOTAL_UTILIZATION = 7.0 =====
+Improved_RTA_DP_FLAG = 0
+
+
+===== TOTAL_UTILIZATION = 7.2 =====
+Improved_RTA_DP_FLAG = 0
+
+
+===== TOTAL_UTILIZATION = 7.4 =====
+Improved_RTA_DP_FLAG = 0
+
+
+===== TOTAL_UTILIZATION = 7.6 =====
+Improved_RTA_DP_FLAG = 0
+
+
+===== TOTAL_UTILIZATION = 7.8 =====
+Improved_RTA_DP_FLAG = 0
 

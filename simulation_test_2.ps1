@@ -2,17 +2,20 @@
 # $utilizations = @(2.2, 2.4, 2.6, 2.8, 3.0)
 # $utilizations = @(0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8)
 # $utilizations = @(0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8)
-# $utilizations = @(0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0 ,5.2, 5.4, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.0, 7.2, 7.4, 7.6, 7.8)
+# $utilizations = @(0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0 ,5.2, 5.4, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.0, 7.2)
 # $utilizations = @(5.0 ,5.2, 5.4, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.0, 7.2)
 
 # $utilizations = @(0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0 ,5.2, 5.4, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.0, 7.2, 7.4, 7.6, 7.8, 8.0, 8.2, 8.4)
 # $utilizations = @(0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8)
 # $utilizations = @(4.0, 4.2, 4.4, 4.6, 4.8, 5.0 ,5.2, 5.4, 5.6, 5.8)
 # $utilizations = @(0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6)
+# $utilizations = 0.1..0.9 | ForEach-Object { [math]::Round($_, 2) } | Where-Object { ($_ * 100) % 5 -eq 0 }
+# $utilizations = @(0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95)
 $utilizations = @()
-for ($u = 0.2; $u -le 8.0; $u += 0.2) {
-    $utilizations += [math]::Round($u, 1)
+for ($u = 0.1; $u -le 1.0; $u += 0.01) {
+    $utilizations += [math]::Round($u, 2)
 }
+
 
 
 # 要尝试的 NUMBER_TASK 值列表
@@ -47,15 +50,15 @@ if (-not (Test-Path $outputDir)) {
 
 foreach ($util in $utilizations) {
 
-    $valFormatted = "{0:F1}" -f $util
+    $valFormatted = "{0:F2}" -f $util
     $valFilename = $valFormatted.Replace('.', '_')
 
-    Write-Host "set TOTAL_UTILIZATION = $util"
+    Write-Host "set PPPprefix = $util"
 
     # 替换 main.h 中的 TOTAL_UTILIZATION 宏定义
     (Get-Content $mainHeaderPath) |
         ForEach-Object {
-            $_ -replace "#define TOTAL_UTILIZATION\s+[0-9.]+", "#define TOTAL_UTILIZATION $valFormatted"
+            $_ -replace "#define PPPprefix\s+[0-9.]+", "#define PPPprefix $valFormatted"
         } |
         Set-Content $mainHeaderPath
 
@@ -80,7 +83,7 @@ foreach ($util in $utilizations) {
             $outputFile = "$outputDir\all_results.txt"
 
 # 添加分隔行和参数信息
-Add-Content $outputFile "`n===== TOTAL_UTILIZATION = $valFormatted ====="
+Add-Content $outputFile "`n===== PPPprefix = $valFormatted ====="
 
 # 执行程序并追加输出
 & ".\$exeName" | Out-String | Add-Content $outputFile
