@@ -68,8 +68,8 @@ while (temp_count < test_times_count)
 
 temp_count++;
 }
-// printf("DA_LC_OPA = %d \n",meet_condition_1_times);
-printf("Improved_RTA_DP_FLAG = %d\n",meet_condition_3_times);
+// printf("DA_OPA_FLAG = %d \n",meet_condition_1_times);
+printf("DA_DP_Combined_FLAG = %d\n",meet_condition_3_times);
 // printf("DA_LC_OPA = %d Improved_RTA_DP_FLAG = %d\n",meet_condition_1_times, meet_condition_3_times);
 
 // printf("DA_OPA = %d  not pass DA_LC_OPA = %d but pass DP_OPA = %d \n",meet_condition_1_times, test_times_count - meet_condition_1_times, meet_condition_3_times);

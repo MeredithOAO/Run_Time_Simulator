@@ -24,6 +24,24 @@ int compare_task_priority_RTA_DP_OPA(const void* a, const void* b) {
 
 }
 
+int compare_task_utlization(const void* a, const void* b) {
+    Task* ta = (Task*)a;
+    Task* tb = (Task*)b;
+
+    double u_a = (double)ta->execution_time/(double)ta->period;
+    double u_b = (double)tb->execution_time/(double)tb->period;;
+
+    if (u_a == u_b)
+    {
+        return (ta->id - tb->id); //same prioity sort by id, small id hp
+    }else{
+    //  priority small mins hp
+    return (u_a - u_b);
+    }
+    
+
+}
+
 
 
 

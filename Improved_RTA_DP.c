@@ -383,6 +383,26 @@ return result;
 
 
 
+
+
+int set_priority_pp_speicific(Task* Task_set_need_to_try, int Number_of_remain_Task){
+
+
+    qsort(Task_set_need_to_try, Number_of_remain_Task, sizeof(Task), compare_task_utlization);
+
+    for (int index = 0; index < Number_of_remain_Task; index++)
+    {
+        
+        Task_set_need_to_try[index].priority_promotion_time = (1.0 - (double)index/(double)Number_of_remain_Task)*Task_set_need_to_try[index].deadline;
+    }
+    
+return 0;
+
+}
+
+
+
+
 int Improved_check_DP_try_OPA(Task* Task_Set_remain, int Number_of_remain_Task){
 
 for (int i = 0; i < Number_of_remain_Task; i++)
@@ -398,6 +418,15 @@ for (int i = 0; i < Number_of_remain_Task; i++)
 {
     Task_set_need_to_try[i] = Task_Set_remain[i];
 }
+
+// set_priority_pp_speicific(Task_set_need_to_try, Number_of_remain_Task);
+    // qsort(Task_set_need_to_try, Number_of_remain_Task, sizeof(Task), compare_task_utlization);
+
+    // for (int index = 0; index < Number_of_remain_Task; index++)
+    // {
+        
+    //     Task_set_need_to_try[index].priority_promotion_time = (1.0 - (double)index/((double)Number_of_remain_Task * 10.0))*Task_set_need_to_try[index].deadline;
+    // }
 
 
     int priority_assign_flag = 0;

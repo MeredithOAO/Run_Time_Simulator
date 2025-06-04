@@ -31,3 +31,5 @@ int check_RTA_DP_OPA(Task* Task_Set_remain, int Number_of_remain_Task);
 
 int RTA_DP_OPA_Result(Task* Task_Set_need_to_test, int Number_of_remain_Task);
 
+
+int compare_task_utlization(const void* a, const void* b);

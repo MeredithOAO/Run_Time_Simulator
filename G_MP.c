@@ -57,9 +57,9 @@ for (int i = 0; i < NUMBER_TASK; i++)
     double U_i_minus1 = 1.0 - U_i;
 
     // int prority_set = floor((1.0 - U_i) * (double)D_C);
-    int prority_set = floor(pow(U_i_minus1, 6) * (double)Global_Tasks[i].deadline);
+    // int prority_set = floor(pow(U_i_minus1, 2) * (double)Global_Tasks[i].deadline);
     // int prority_set = floor((double)Global_Tasks[i].deadline * 0.9);
-    // int prority_set = (double)Global_Tasks[i].deadline * PPPprefix;
+    int prority_set = (double)Global_Tasks[i].deadline * PPPprefix;
     // int prority_set = max(Global_Tasks[i].deadline - Global_Tasks[i].execution_time - floor((double)ALL_C_j / (double)NUMBER_PROCESSORS), 0);
     // int heuristic_calcuation = (double)1.0 - (0.02 * (double)NUMBER_PROCESSORS/(double)TOTAL_UTILIZATION);
     // double heuristic_calcuation = ((double)NUMBER_PROCESSORS- 0.8 - (double)TOTAL_UTILIZATION)/(double)10;

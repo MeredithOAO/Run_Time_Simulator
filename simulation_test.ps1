@@ -12,7 +12,7 @@
 
 
 $utilizations = @()
-for ($u = 0.2; $u -le 8.0; $u += 0.2) {
+for ($u = 1.5; $u -le 3.5; $u += 0.1) {
     $utilizations += [math]::Round($u, 1)
 }
 
